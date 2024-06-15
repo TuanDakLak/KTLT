@@ -103,3 +103,4 @@ void ViewListOfClass(); // xem tất cả lớp học
 void ViewListOfStuInClass(ListClasses& listclasses); // xem tất cả học sinh trong một lớp 
 void ViewListOfCourse(ListCourses& listcourses);   // Xem tất cả các khóa học 
 void ViewListOfStuInCourse(ListCourses& listcourses, ListClasses& listclasses); // Xem tất cả học sinh trong một khóa học 
+// Function of Student 
