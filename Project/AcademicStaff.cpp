@@ -671,8 +671,9 @@
         }
         cout << "Course not found!" << endl;
     }
-//6-11
-Student* khoitaosinhvien2()
+    <<<<<< < HEAD
+        //6-11
+        Student * khoitaosinhvien2()
     {
         Student* s = new Student();
 
@@ -702,7 +703,8 @@ Student* khoitaosinhvien2()
         }
 
     }
-    Semester createSemester() {
+    Semester createSemester()
+    {
         Semester tmp;
         cout << "Hoc ki bao nhieu (1,2 hay 3) : "; cin >> tmp.semester;
         cout << "Nam hoc :"; cin >> tmp.startDate.nam; tmp.endDate.nam = tmp.startDate.nam;
@@ -983,3 +985,6 @@ void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses
         course = course->next;
     }
 }
+=======
+
+>>>>>>> 335a44d (Go debug)

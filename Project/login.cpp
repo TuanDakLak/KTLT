@@ -1,8 +1,8 @@
 ﻿#include "AcademicStaff.h"
-const string userData = "Users.csv"; 
-string id, pass; 
-User* current = NULL; 
-ListUser list; 
+const string userData = "Users.csv";
+string id, pass;
+User* current = NULL;
+ListUser list;
 void addUser(ListUser& l, User* u)
 {
 	if (u == nullptr)
@@ -15,30 +15,35 @@ void addUser(ListUser& l, User* u)
 	}
 	else
 	{
-		l.tail->next = u; 
+		l.tail->next = u;
 		u->prev = l.tail;
-		l.tail = u; 
+		l.tail = u;
 
 	}
 	l.size++;
 }
-User* convertUserData(ifstream& data)
-{
+User* convertUserData(ifstream& data) {
 	User* u = new User;
-	Date dateofBirth; 
-	string p; 
-	getline(data, u->id, ','); 
-	if (u->id = "")return NULL;
+	string p;
+
+	getline(data, u->id, ',');
+	if (u->id == "") {
+		delete u;
+		return nullptr;
+	}
+
 	getline(data, u->password, ',');
 	getline(data, u->lastName, ',');
 	getline(data, u->firstName, ',');
 	getline(data, u->className, ',');
 	getline(data, u->gender, ',');
+
 	getline(data, p, ',');
-	// Viết hàm strToDate; 
 	u->dateofbirth = strToDate(p);
+
 	getline(data, p, ',');
 	u->academicYear = stoi(p);
+
 	getline(data, p, '\n');
 	if (p == "TRUE")
 	{
@@ -46,53 +51,57 @@ User* convertUserData(ifstream& data)
 	}
 	else
 		u->isStaff = false;
-	u->next = NULL; 
-	u->prev = NULL;
-	return u; 
-	f.close();
+
+	// Bỏ qua cột cuối cùng không cần thiết
+
+	u->next = nullptr;
+	u->prev = nullptr;
+
+	return u;
 }
 void getList()
 {
-	ifstream f(userData); 
-	string data = ""; 
+	ifstream f(userData);
+	string data = "";
 	if (!f.is_open())
 	{
-		cout << "khong the mo file de doc \n"; 
+		cout << "khong the mo file de doc \n";
 		return;
 	}
 	// Khởi tạo rỗng 
-	list.head = list.tail = nullptr; 
+	list.head = list.tail = nullptr;
 	getline(f, data); // bỏ dòng đầu 
 	while (!f.eof())
 	{
-		addUser(list, convertUserData(f)); 
+		addUser(list, convertUserData(f));
 	}
 }
 // tới hàm dô phần login 
 User* login(string id, string pass)
 {
-	User* tmp = list.head; 
+	User* tmp = list.head;
 	while (tmp != nullptr)
 	{
-		if (id == data->id)
+		if (id == tmp->id)
 		{
 			if (pass == tmp->password)
 				return tmp;
 			else
 				return NULL;
 		}
-		tmp = tmp->next; 
+		tmp = tmp->next;
 		// Duyệt hết danh sách 
 	}
+	return tmp;
 }
-string getPass(bool isHidden) 
+string getPass(bool isHidden)
 {
 	string pass;
 	char ch;
 	while ((ch = getchar()) != '\n') {
 		if (ch == '\b') { // Handle backspace
 			if (!pass.empty()) {
-				std::cout << "\b \b";
+				cout << "\b \b";
 				pass.pop_back();
 			}
 		}
@@ -109,43 +118,56 @@ string getPass(bool isHidden)
 	cout << endl;
 	return pass;
 }
+void clearScreen()
+{
+	system("cls"); // Xóa màn hình console
+}
 void Menu()
 {
+	cin.ignore(); // Xóa bộ nhớ đệm
 	cout << "\n-------------------------\n";
 	cout << "		Login		" << endl;
-	cout << "ID:"; 
-	cout << "Password: "; 
-	getline(cin, id); 
-	password = getPass(true);
-	current = login(id, pass); 
+	cout << "ID:";
+	getline(cin, id);
+	cout << "Password: ";
+	pass = getPass(true);
 	cout << "\n---------------------------\n";
 }
-void  LoginMenu()
+
+
+void LoginMenu()
 {
-	getList();
 	while (true)
 	{
-		Menu();
-		if (current == nullptr)
+		getList(); // Cập nhật danh sách người dùng mỗi lần lặp
+		Menu(); // Hiển thị menu đăng nhập và lấy id, pass từ người dùng
+
+		if (id == "0") {
+			cout << "Quitting login process.\n";
+			break; // Thoát vòng lặp nếu người dùng nhập id là "0"
+		}
+
+		current = login(id, pass); // Đăng nhập và cập nhật current
+
+		if (current != nullptr)
 		{
-			cout << "Login failed \n";
+			cout << "Login successful\n";
+			if (current->isStaff)
+			{
+				cout << "Welcome, staff!\n";
+				academicstaffmember(); // Gọi hàm cho staff
+			}
+			else
+			{
+				cout << "Welcome, user!\n";
+				tu6_11(); // Gọi hàm cho user
+			}
 		}
 		else
 		{
-			cout << "Login successful \n";
-			break;
+			cout << "Login failed. Please try again.\n";
 		}
-
 	}
 
-	if (current->isStaff)
-	{
-		academicstaffmember();
-	}
-	else
-	{
-		tu6_11();
-	}
-	system("cls");
-
+	system("cls"); // Xóa màn hình sau khi hoàn thành
 }

@@ -152,15 +152,16 @@ ListStudent CreateListStudent();
 void tu6_11();
 <<<<<<< HEAD
 // Cac ham login 
-User* convertUserData(ifstream& data);
+
+User * convertUserData(ifstream & data);
 void addUser(ListUser& l, User* u);
-void getList(); 
-User* login(string id, string pass); 
-string getPass(bool isHidden); 
+void getList();
+User* login(string id, string pass);
+string getPass(bool isHidden);
 void Menu();
 void LoginMenu();
 // function setting 
-Date strToDate(const std::string& dateStr); 
+Date strToDate(const std::string& dateStr);
 
 
 
