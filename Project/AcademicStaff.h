@@ -47,6 +47,20 @@ struct ListUser {
     User* tail;
     int size;
 };
+//CourseMark
+struct CourseMark {
+    float otherMark = 0;
+    float midtermMark = 0;
+    float finalMark = 0;
+    float totalMark = 0;
+};
+//SemesterMark
+struct SemesterMark {
+    float GPA = 0;
+    float overallGPA = 0;
+};
+
+//Dong bo Struct
 struct Student {
     string NO;
     string studentID;
@@ -59,6 +73,8 @@ struct Student {
     ListCourses enrolledCourses;
     Student* prev;
     Student* next;
+    CourseMark courseMark;
+    SemesterMark semesterMark;
 };
 // Thêm data vào struclisst 
 struct ListStudent {
@@ -105,6 +121,7 @@ void print(ListClasses lc);
 void khoitaoliststudent(ListStudent& ls);
 void academicstaffmember();
 void Exportfile(ListClasses lc);
+void ExportCourseInforamtion(ListCourses& listcourses, ListClasses& listclasses);
 
 // Hàm của Quốc 
 void RemoveStudentFromTheCourse(Course* toCourse); 
