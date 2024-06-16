@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -25,6 +25,14 @@ struct Course {
     string id;
     string courseName;
     string teacherName;
+    //So luong sinh vien trong lop 
+    int max;
+    //So tin tin chi
+    int credits;
+    //Ngay hoc trong tuan
+    int dayOfWeek;
+    //tiet hoc trong ngay
+    string session;
     Course* prev;
     Course* next;
 };
@@ -32,7 +40,7 @@ struct ListCourses {
     Course* head;
     Course* tail;
     Date startDate, endDate;
-    int size;
+    int size; 
 };
 struct ListUser {
     User* head;
@@ -77,12 +85,14 @@ struct ListClasses {
 struct Semester {
     int semester;
     Date startDate, endDate;
+    //danh sach mon hoc cua hoc ki
+    ListCourses list;
 };
 struct Year {
     int From, To;
     ListClasses listclasses;
 };
-// Ham chuc nang cho Staff
+// Ham cua Tuan
 void CreateSchoolYear();
 void khoitaolophoc();
 void nhapngay(Student*& s);
@@ -94,6 +104,7 @@ void importfile(ListClasses& lc);
 void print(ListClasses lc);
 void khoitaoliststudent(ListStudent& ls);
 void academicstaffmember();
+void Exportfile(ListClasses lc);
 
 // Hàm của Quốc 
 void RemoveStudentFromTheCourse(Course* toCourse); 
@@ -103,4 +114,17 @@ void ViewListOfClass(); // xem tất cả lớp học
 void ViewListOfStuInClass(ListClasses& listclasses); // xem tất cả học sinh trong một lớp 
 void ViewListOfCourse(ListCourses& listcourses);   // Xem tất cả các khóa học 
 void ViewListOfStuInCourse(ListCourses& listcourses, ListClasses& listclasses); // Xem tất cả học sinh trong một khóa học 
-// Function of Student 
+
+
+//Ham cua Ty
+Student* khoitaosinhvien2();
+bool checkTime(Date a, Date b);
+Semester createSemester();
+Course* CreateCourse();
+void addCourseToSemester(Semester& hk);
+void viewOfCourse(ListCourses list);
+void updateCourseInfo(ListCourses& List);
+void fileListStudent(Course* x, Student* a);
+void addStudentToCourse(Student*& a, Course* x);
+ListStudent CreateListStudent();
+void tu6_11();
