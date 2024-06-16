@@ -1,4 +1,4 @@
-﻿#include "AcademicStaff.h"
+#include "AcademicStaff.h"
 	ListClasses listclasses;
 	Year y;
 	ListStudent studentList;
@@ -186,7 +186,7 @@
     {
         Class* tmp = lc.head;
         ifstream file;
-        file.open("Import.csv");
+        file.open("23CTT5.csv");
         if (!file)
         {
             cout << "Khong the mo file !" << endl;
@@ -233,15 +233,75 @@
         }
         file.close();
     }
+
+    //19
+    void ExportCourseInforamtion(ListCourses& listcourses, ListClasses& listclasses)
+    {
+        string courseID;
+        cout << "Enter ID of course: ";
+        cin >> courseID;
+
+        ofstream file;
+        file.open("Export.csv");
+        if (!file)
+        {
+            cout << "Khong the mo file Export.csv" << endl;
+            return;
+        }
+        file << "NO,Student ID,Last Name,First Name,Gender,Date of birth,Social ID" << endl;
+        // Find the course with the specified ID
+        Course* course = listcourses.head;
+        while (course != nullptr)
+        {
+            if (course->id == courseID)
+            {
+
+                Class* classNode = listclasses.head;
+                bool studentFound = false;
+                while (classNode != nullptr)
+                {
+                    Student* student = classNode->list.head;
+                    while (student != nullptr)
+                    {
+
+                        Course* enrolledCourse = student->enrolledCourses.head;
+                        while (enrolledCourse != nullptr)
+                        {
+                            if (enrolledCourse->id == courseID)
+                            {
+                                file << student->NO << "," << student->studentID << "," << student->lastName << "," << student->firstName << "," << student->gender << "," << student->dateOfBirth.ngay << "/" << student->dateOfBirth.thang << "/" << student->dateOfBirth.nam << "," << student->socialID << endl;
+                                studentFound = true;
+                                break;
+                            }
+                            enrolledCourse = enrolledCourse->next;
+                        }
+                        student = student->next;
+                    }
+                    classNode = classNode->next;
+                }
+                if (studentFound == true)
+                {
+                    cout << "Export successfully !" << endl;
+                }
+                file.close();
+                return;
+            }
+            course = course->next;
+        }
+        cout << "Course not found!" << endl;
+
+    }
+    //Menu
     void academicstaffmember()
     {
-        cout << "-------------------Staff Member------------------\n";
+        cout << "----------------------------------Staff Member----------------------------------\n";
         cout << "1. Create a school year \n";
         cout << "2. Create Several Classes for 1st students\n";
         cout << "3. Add new 1st year students to 1st year classes \n";
         cout << "4. Import CSV file containing all students in a specific class to the system\n";
         cout << "5. See list student !\n";
         cout << "0. Exit !\n";
+        cout << "--------------------------------------------------------------------------------\n";
         int lc;
         while (1)
         {
