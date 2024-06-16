@@ -1,5 +1,6 @@
 #include "AcademicStaff.h"
 int main()
 {
-	academicstaffmember();
+	/*academicstaffmember();*/
+	tu6_11();
 }
