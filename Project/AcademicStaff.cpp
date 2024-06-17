@@ -291,6 +291,83 @@
         cout << "Course not found!" << endl;
 
     }
+
+ //20
+ void importfile(ListCourses& listcourses, ListClasses& listclasses)
+ {
+     string courseID;
+     cout << "Enter ID of course: ";
+     cin >> courseID;
+
+     ifstream file;
+     file.open("Tenfile");
+     if (!file)
+     {
+         cout << "Khong the mo file! " << endl;
+         return;
+     }
+
+     string line;
+     getline(file, line);
+     Course* course = listcourses.head;
+     while (course != nullptr)
+     {
+         if (course->id == courseID)
+         {
+
+             Class* classNode = listclasses.head;
+             bool studentFound = false;
+             while (classNode != nullptr)
+             {
+                 Student* student = classNode->list.head;
+                 while (student != nullptr)
+                 {
+
+                     Course* enrolledCourse = student->enrolledCourses.head;
+                     while (enrolledCourse != nullptr)
+                     {
+                         if (enrolledCourse->id == courseID)
+                         {
+
+                             stringstream ss;
+                             string tmp;
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             int mark = stoi(tmp);
+                             student->courseMark.otherMark = mark;
+                             getline(ss, tmp, ',');
+                             mark = stoi(tmp);
+                             student->courseMark.midtermMark = mark;
+                             getline(ss, tmp, ',');
+                             mark = stoi(tmp);
+                             student->courseMark.finalMark = mark;
+                             getline(ss, tmp, ',');
+                             mark = stoi(tmp);
+                             student->courseMark.totalMark = mark;
+                             studentFound = true;
+                             break;
+                         }
+                         enrolledCourse = enrolledCourse->next;
+                     }
+                     student = student->next;
+                 }
+                 classNode = classNode->next;
+             }
+
+             cout << "Import Successfully !" << endl;
+		file.close();
+             return;
+         }
+         course = course->next;
+     }
+     cout << "Course not found!" << endl;
+ }
     //Menu
     void academicstaffmember()
     {
