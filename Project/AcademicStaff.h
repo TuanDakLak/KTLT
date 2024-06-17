@@ -10,7 +10,7 @@ using namespace std;
 struct Date {
     int ngay, thang, nam;
 };
-struct User {
+struct User {a
     string id;
     string password;
     string lastName;
@@ -122,6 +122,7 @@ void khoitaoliststudent(ListStudent& ls);
 void academicstaffmember();
 void Exportfile(ListClasses lc);
 void ExportCourseInforamtion(ListCourses& listcourses, ListClasses& listclasses);
+void importfile(ListCourses& listcourses, ListClasses& listclasses);
 
 // Hàm của Quốc 
 void RemoveStudentFromTheCourse(Course* toCourse); 
