@@ -934,4 +934,52 @@ Student* khoitaosinhvien2()
 
         }
     }
+//21
+void ViewTheScoreboardOfACourse(ListCourses& listcourses, ListClasses& listclasses)
+{
+    string courseID;
+    cout << "Enter ID of course: ";
+    cin >> courseID;
 
+    
+    Course* course = listcourses.head;
+    while (course != nullptr)
+    {
+        if (course->id == courseID)
+        {
+
+            Class* classNode = listclasses.head;
+           
+            bool studentFound = false;
+            while (classNode != nullptr)
+            {
+                cout << "Class Name : " << classNode->className << endl;
+                Student* student = classNode->list.head;
+                while (student != nullptr)
+                {
+
+                    Course* enrolledCourse = student->enrolledCourses.head;
+                    while (enrolledCourse != nullptr)
+                    {
+                        if (enrolledCourse->id == courseID)
+                        {
+
+                            cout << student->firstName << " " << student->lastName << " : " << student->courseMark.otherMark << " " << student->courseMark.midtermMark << " ";
+                            cout << student->courseMark.finalMark << " " << student->courseMark.totalMark << endl;
+                            
+                            studentFound = true;
+                            break;
+                        }
+                        enrolledCourse = enrolledCourse->next;
+                    }
+                    student = student->next;
+                }
+                classNode = classNode->next;
+            }
+
+           
+            return;
+        }
+        course = course->next;
+    }
+}
