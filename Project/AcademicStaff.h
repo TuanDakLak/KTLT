@@ -10,7 +10,7 @@ using namespace std;
 struct Date {
     int ngay, thang, nam;
 };
-struct User {a
+struct User {
     string id;
     string password;
     string lastName;
@@ -146,3 +146,4 @@ void fileListStudent(Course* x, Student* a);
 void addStudentToCourse(Student*& a, Course* x);
 ListStudent CreateListStudent();
 void tu6_11();
+void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses);
