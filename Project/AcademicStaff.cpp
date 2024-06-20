@@ -935,7 +935,7 @@ Student* khoitaosinhvien2()
         }
     }
 //21
-void ViewTheScoreboardOfACourse(ListCourses& listcourses, ListClasses& listclasses)
+void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses)
 {
     string courseID;
     cout << "Enter ID of course: ";
