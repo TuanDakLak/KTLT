@@ -11,12 +11,15 @@ struct Date {
     int ngay, thang, nam;
 };
 struct User {
+    // Them vào struct Dateofbirth, academicYear
     string id;
     string password;
     string lastName;
     string firstName;
     string className;
     string gender;
+    int academicYear; 
+    Date dateofbirth;
     bool isStaff;
     User* prev;
     User* next;
@@ -108,6 +111,7 @@ struct Year {
     int From, To;
     ListClasses listclasses;
 };
+
 // Ham cua Tuan
 void CreateSchoolYear();
 void khoitaolophoc();
@@ -145,3 +149,16 @@ void fileListStudent(Course* x, Student* a);
 void addStudentToCourse(Student*& a, Course* x);
 ListStudent CreateListStudent();
 void tu6_11();
+// Cac ham login 
+User* convertUserData(ifstream& data);
+void addUser(ListUser& l, User* u);
+void getList(); 
+User* login(string id, string pass); 
+string getPass(bool isHidden); 
+void Menu();
+void LoginMenu();
+// function setting 
+Date strToDate(const std::string& dateStr); 
+
+
+
