@@ -5,7 +5,7 @@
 #include <sstream>
 using namespace std;
 
-
+ 
 
 struct Date {
     int ngay, thang, nam;
@@ -126,6 +126,7 @@ void khoitaoliststudent(ListStudent& ls);
 void academicstaffmember();
 void Exportfile(ListClasses lc);
 void ExportCourseInforamtion(ListCourses& listcourses, ListClasses& listclasses);
+void importfile(ListCourses& listcourses, ListClasses& listclasses);
 
 // Hàm của Quốc 
 void RemoveStudentFromTheCourse(Course* toCourse); 
@@ -149,6 +150,7 @@ void fileListStudent(Course* x, Student* a);
 void addStudentToCourse(Student*& a, Course* x);
 ListStudent CreateListStudent();
 void tu6_11();
+<<<<<<< HEAD
 // Cac ham login 
 User* convertUserData(ifstream& data);
 void addUser(ListUser& l, User* u);
@@ -162,3 +164,6 @@ Date strToDate(const std::string& dateStr);
 
 
 
+=======
+void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses);
+>>>>>>> 5f77cc6d580f15235f6da6c578baf86d073bae28

@@ -291,6 +291,83 @@
         cout << "Course not found!" << endl;
 
     }
+
+ //20
+ void importfile(ListCourses& listcourses, ListClasses& listclasses)
+ {
+     string courseID;
+     cout << "Enter ID of course: ";
+     cin >> courseID;
+
+     ifstream file;
+     file.open("Scoreboard.csv");
+     if (!file)
+     {
+         cout << "Khong the mo file! " << endl;
+         return;
+     }
+
+     string line;
+     getline(file, line);
+     Course* course = listcourses.head;
+     while (course != nullptr)
+     {
+         if (course->id == courseID)
+         {
+
+             Class* classNode = listclasses.head;
+             bool studentFound = false;
+             while (classNode != nullptr)
+             {
+                 Student* student = classNode->list.head;
+                 while (student != nullptr)
+                 {
+
+                     Course* enrolledCourse = student->enrolledCourses.head;
+                     while (enrolledCourse != nullptr)
+                     {
+                         if (enrolledCourse->id == courseID)
+                         {
+
+                             stringstream ss;
+                             string tmp;
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             getline(ss, tmp, ',');
+                             int mark = stoi(tmp);
+                             student->courseMark.otherMark = mark;
+                             getline(ss, tmp, ',');
+                             mark = stoi(tmp);
+                             student->courseMark.midtermMark = mark;
+                             getline(ss, tmp, ',');
+                             mark = stoi(tmp);
+                             student->courseMark.finalMark = mark;
+                             getline(ss, tmp, ',');
+                             mark = stoi(tmp);
+                             student->courseMark.totalMark = mark;
+                             studentFound = true;
+                             break;
+                         }
+                         enrolledCourse = enrolledCourse->next;
+                     }
+                     student = student->next;
+                 }
+                 classNode = classNode->next;
+             }
+
+             cout << "Import Successfully !" << endl;
+		file.close();
+             return;
+         }
+         course = course->next;
+     }
+     cout << "Course not found!" << endl;
+ }
     //Menu
     void academicstaffmember()
     {
@@ -300,6 +377,8 @@
         cout << "3. Add new 1st year students to 1st year classes \n";
         cout << "4. Import CSV file containing all students in a specific class to the system\n";
         cout << "5. See list student !\n";
+	cout << "19. Export list student into a csv file \n";
+	cout << "20. Import the scoreboard of a course \n";
         cout << "0. Exit !\n";
         cout << "--------------------------------------------------------------------------------\n";
         int lc;
@@ -330,6 +409,14 @@
             {
                 print(listclasses);
             }
+	    else if (lc == 19)
+	    {
+		ExportCourseInforamtion(l_Course,listclasses);
+	    }
+	    else if (lc == 20)
+	    {
+		    importfile(l_Course,listclasses);
+	    }
             else if (lc == 0)
             {
                 break;
@@ -847,4 +934,52 @@ Student* khoitaosinhvien2()
 
         }
     }
+//21
+void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses)
+{
+    string courseID;
+    cout << "Enter ID of course: ";
+    cin >> courseID;
 
+    
+    Course* course = listcourses.head;
+    while (course != nullptr)
+    {
+        if (course->id == courseID)
+        {
+
+            Class* classNode = listclasses.head;
+           
+            bool studentFound = false;
+            while (classNode != nullptr)
+            {
+                cout << "Class Name : " << classNode->className << endl;
+                Student* student = classNode->list.head;
+                while (student != nullptr)
+                {
+
+                    Course* enrolledCourse = student->enrolledCourses.head;
+                    while (enrolledCourse != nullptr)
+                    {
+                        if (enrolledCourse->id == courseID)
+                        {
+
+                            cout << student->firstName << " " << student->lastName << " : " << student->courseMark.otherMark << " " << student->courseMark.midtermMark << " ";
+                            cout << student->courseMark.finalMark << " " << student->courseMark.totalMark << endl;
+                            
+                            studentFound = true;
+                            break;
+                        }
+                        enrolledCourse = enrolledCourse->next;
+                    }
+                    student = student->next;
+                }
+                classNode = classNode->next;
+            }
+
+           
+            return;
+        }
+        course = course->next;
+    }
+}
