@@ -62,7 +62,6 @@ struct SemesterMark {
     float GPA = 0;
     float overallGPA = 0;
 };
-
 //Dong bo Struct
 struct Student {
     string NO;
@@ -79,6 +78,7 @@ struct Student {
     CourseMark courseMark;
     SemesterMark semesterMark;
 };
+
 // Thêm data vào struclisst 
 struct ListStudent {
     Student* head;
@@ -87,6 +87,7 @@ struct ListStudent {
     string className;
     string year;
 };
+
 // Struct Class thêm ID 
 struct Class 
 {
@@ -126,6 +127,7 @@ void khoitaoliststudent(ListStudent& ls);
 void academicstaffmember();
 void Exportfile(ListClasses lc);
 void ExportCourseInforamtion(ListCourses& listcourses, ListClasses& listclasses);
+//20
 void importfile(ListCourses& listcourses, ListClasses& listclasses);
 
 // Hàm của Quốc 
