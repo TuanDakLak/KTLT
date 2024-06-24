@@ -930,6 +930,7 @@ Student* khoitaosinhvien2()
             else if (chon == 5) {
                 Student* sinhVien = khoitaosinhvien2();
                 addStudentToCourse(sinhVien, HocKi.list.head);
+		AddStudent1(studentList, sinhVien);
             }
 
         }
