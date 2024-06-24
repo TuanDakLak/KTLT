@@ -9,7 +9,7 @@
     Student* s;
     Class* cl;
     string classname;
-
+	Semester HocKi;
     void CreateSchoolYear() {
         cout << "The begining of the school year: ";
         cin >> y.From;
@@ -902,15 +902,16 @@ Student* khoitaosinhvien2()
     }
 
     void tu6_11() {
-        Semester HocKi;
+        
         bool Run = true;
-        while (Run) {
-            cout << "1.Create a semester\n";
+	    cout << "1.Create a semester\n";
             cout << "2.Add a course to this semester\n";
             cout << "3.View list of course\n";
             cout << "4.Update coures infomartion\n";
             cout << "5.Add a student to the course\n";
-            cout << "0.end\n";
+            cout << "0.End\n";
+        while (Run) {
+            
             int chon = 0; cin >> chon;
             if (chon == 1) {
                 HocKi = createSemester();
