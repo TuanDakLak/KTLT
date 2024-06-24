@@ -186,6 +186,7 @@
     {
         Class* tmp = lc.head;
         ifstream file;
+	    //Doc tu file 23CTT5.csv
         file.open("23CTT5.csv");
         if (!file)
         {
@@ -197,8 +198,6 @@
         cin >> classname;
         string line;
         getline(file, line);
-
-        
         while (tmp != NULL)
         {
             if (tmp->className == classname)
@@ -224,7 +223,6 @@
                     tmp1->dateOfBirth.nam = stoi(stringtmp2);
                     getline(ss, tmp1->socialID, '\n');
                     AddStudent1(tmp->list, tmp1);
-
                 }
                 cout << "Import file successfully !" << endl;
                 break;
@@ -368,7 +366,7 @@
      }
      cout << "Course not found!" << endl;
  }
-    //Menu
+    //Menu tu 1-5, 19,20
     void academicstaffmember()
     {
         cout << "----------------------------------Staff Member----------------------------------\n";
@@ -415,7 +413,7 @@
 	    }
 	    else if (lc == 20)
 	    {
-		    importfile(l_Course,listclasses);
+		importfile(l_Course,listclasses);
 	    }
             else if (lc == 0)
             {
@@ -428,6 +426,7 @@
             }
         }
     }
+
     void RemoveStudentFromTheCourse(Course* toCourse)
     {
         // Xóa nhờ student ID 
