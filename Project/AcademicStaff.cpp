@@ -903,12 +903,14 @@ Student* khoitaosinhvien2()
     void tu6_11() {
         
         bool Run = true;
+	    cout << "--------------MENU-------------\n";
 	    cout << "1.Create a semester\n";
             cout << "2.Add a course to this semester\n";
             cout << "3.View list of course\n";
             cout << "4.Update coures infomartion\n";
             cout << "5.Add a student to the course\n";
             cout << "0.End\n";
+	    cout << "-------------------------------\n";
         while (Run) {
             
             int chon = 0; cin >> chon;
