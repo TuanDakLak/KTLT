@@ -375,6 +375,8 @@
         cout << "3. Add new 1st year students to 1st year classes \n";
         cout << "4. Import CSV file containing all students in a specific class to the system\n";
         cout << "5. See list student !\n";
+	cout << "19. Export list student into a csv file \n";
+	cout << "20. Import the scoreboard of a course \n";
         cout << "0. Exit !\n";
         cout << "--------------------------------------------------------------------------------\n";
         int lc;
@@ -405,6 +407,14 @@
             {
                 print(listclasses);
             }
+	      else if (chon == 19)
+ 	    {
+    		ExportCourseInforamtion(l_Course, listclasses);
+ 	    }
+	     else if (chon == 20)
+ 	    {
+     		importfile(l_Course, listclasses);
+ 	    }
             else if (lc == 0)
             {
                 break;
