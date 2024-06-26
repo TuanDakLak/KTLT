@@ -4,9 +4,6 @@
 #include <fstream>
 #include <sstream>
 using namespace std;
-
- 
-
 struct Date {
     int ngay, thang, nam;
 };
@@ -50,19 +47,18 @@ struct ListUser {
     User* tail;
     int size;
 };
-//CourseMark
+//CourseMark for import file
 struct CourseMark {
     float otherMark = 0;
     float midtermMark = 0;
     float finalMark = 0;
     float totalMark = 0;
 };
-//SemesterMark
+//SemesterMark for import file
 struct SemesterMark {
     float GPA = 0;
     float overallGPA = 0;
 };
-
 //Dong bo Struct
 struct Student {
     string NO;
@@ -111,7 +107,6 @@ struct Year {
     int From, To;
     ListClasses listclasses;
 };
-
 // Ham cua Tuan
 void CreateSchoolYear();
 void khoitaolophoc();

@@ -3,13 +3,13 @@
 	Year y;
 	ListStudent studentList;
     ListCourses l_Course; 
-
 	Date currentDate;
+
     Class* NodeClass;
     Student* s;
     Class* cl;
     string classname;
-
+	Semester HocKi;
     void CreateSchoolYear() {
         cout << "The begining of the school year: ";
         cin >> y.From;
@@ -186,6 +186,7 @@
     {
         Class* tmp = lc.head;
         ifstream file;
+	    //Doc tu file 23CTT5.csv
         file.open("23CTT5.csv");
         if (!file)
         {
@@ -197,8 +198,6 @@
         cin >> classname;
         string line;
         getline(file, line);
-
-        
         while (tmp != NULL)
         {
             if (tmp->className == classname)
@@ -224,7 +223,6 @@
                     tmp1->dateOfBirth.nam = stoi(stringtmp2);
                     getline(ss, tmp1->socialID, '\n');
                     AddStudent1(tmp->list, tmp1);
-
                 }
                 cout << "Import file successfully !" << endl;
                 break;
@@ -368,7 +366,7 @@
      }
      cout << "Course not found!" << endl;
  }
-    //Menu
+    //Menu tu 1-5, 19,20
     void academicstaffmember()
     {
         cout << "----------------------------------Staff Member----------------------------------\n";
@@ -415,7 +413,7 @@
 	    }
 	    else if (lc == 20)
 	    {
-		    importfile(l_Course,listclasses);
+		importfile(l_Course,listclasses);
 	    }
             else if (lc == 0)
             {
@@ -428,6 +426,7 @@
             }
         }
     }
+
     void RemoveStudentFromTheCourse(Course* toCourse)
     {
         // Xóa nhờ student ID 
@@ -904,15 +903,17 @@
     }
 
     void tu6_11() {
-        Semester HocKi;
+        
         bool Run = true;
-        while (Run) {
-            cout << "1.Create a semester\n";
+	    cout << "--------------MENU-------------\n";
+	    cout << "1.Create a semester\n";
             cout << "2.Add a course to this semester\n";
             cout << "3.View list of course\n";
             cout << "4.Update coures infomartion\n";
             cout << "5.Add a student to the course\n";
-            cout << "0.end\n";
+            cout << "0.End\n";
+	    cout << "-------------------------------\n";
+        while (Run) {        
             int chon = 0; cin >> chon;
             if (chon == 1) {
                 HocKi = createSemester();
@@ -932,8 +933,13 @@
             else if (chon == 5) {
                 Student* sinhVien = khoitaosinhvien2();
                 addStudentToCourse(sinhVien, HocKi.list.head);
+		AddStudent1(studentList, sinhVien);
             }
-
+		else
+	    {
+		    cout << "Cannot get your requirement !\n";
+		    Run = false;
+	    }
         }
     }
 //21
@@ -942,14 +948,11 @@ void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses
     string courseID;
     cout << "Enter ID of course: ";
     cin >> courseID;
-
-    
     Course* course = listcourses.head;
     while (course != nullptr)
     {
         if (course->id == courseID)
         {
-
             Class* classNode = listclasses.head;
            
             bool studentFound = false;
@@ -959,13 +962,11 @@ void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses
                 Student* student = classNode->list.head;
                 while (student != nullptr)
                 {
-
                     Course* enrolledCourse = student->enrolledCourses.head;
                     while (enrolledCourse != nullptr)
                     {
                         if (enrolledCourse->id == courseID)
                         {
-
                             cout << student->firstName << " " << student->lastName << " : " << student->courseMark.otherMark << " " << student->courseMark.midtermMark << " ";
                             cout << student->courseMark.finalMark << " " << student->courseMark.totalMark << endl;
                             
@@ -978,8 +979,6 @@ void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses
                 }
                 classNode = classNode->next;
             }
-
-           
             return;
         }
         course = course->next;
