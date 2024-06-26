@@ -986,6 +986,9 @@ void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses
                 addStudentToCourse(sinhVien, HocKi.list.head);
 		AddStudent1(studentList, sinhVien);
             }
+	    else if (chon == 21) {
+                 ViewTheScoreboardOfACourse(l_Course, listclasses);
+            }
 		else
 	    {
 		    cout << "Cannot get your requirement !\n";
