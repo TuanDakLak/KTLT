@@ -3,8 +3,8 @@
 	Year y;
 	ListStudent studentList;
     ListCourses l_Course; 
-
 	Date currentDate;
+
     Class* NodeClass;
     Student* s;
     Class* cl;
