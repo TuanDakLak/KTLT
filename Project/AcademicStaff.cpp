@@ -705,6 +705,7 @@
     Semester createSemester()
     {
         Semester tmp;
+	    cout<<"------------------------------------------------------------\n";
         cout << "Hoc ki bao nhieu (1,2 hay 3) : "; cin >> tmp.semester;
         cout << "Nam hoc :"; cin >> tmp.startDate.nam; tmp.endDate.nam = tmp.startDate.nam;
         cout << "Ngay bat dau : " << endl;;
@@ -730,12 +731,14 @@
             cout << "\t\tThang : ";
             cin >> tmp.endDate.thang;
         }
+	    cout<<"--------------------------------------------------------------------\n";
         tmp.list.head = tmp.list.tail = NULL;
         return tmp;
     }
     Course* CreateCourse() {
         Course* p = new Course();
         cin.ignore();
+	    cout<<"------------------------------------------------------------\n";
         cout << "ID mon hoc : ";
         getline(cin, p->id);
         cout << "Ten mon hoc : ";
@@ -762,6 +765,7 @@
         cout << "Hoc vao thu : "; cin >> p->dayOfWeek;
         cin.ignore();
         cout << "Hoc vao luc : "; getline(cin, p->session);
+	    cout<<"------------------------------------------------------------\n";
         return p;
     }
     void addCourseToSemester(Semester& hk) {
@@ -799,6 +803,7 @@
         }
         int i = 1;
         while (list.head != NULL) {
+	    cout<<"-----------------------------------------------------\n";
             cout << "Mon hoc thu " << i << endl;
             cout << "\t\tTen mon hoc : " << list.head->courseName << endl;
             cout << "\t\tMa mon hoc :" << list.head->id << endl;
@@ -817,6 +822,7 @@
             else if (list.head->session == "S4") {
                 cout << " 15:30\n";
             }
+		cout<<"-------------------------------------------------\n";
             i++;
             list.head = list.head->next;
         }
@@ -825,6 +831,7 @@
     void updateCourseInfo(ListCourses& List) {
         string Id;
         cin.ignore();
+	    cout<<"-------------------------------------------------------\n";
         cout << "Nhap id mon hoc de cap nhat thong tin : ";
         getline(cin, Id);
         if (List.head->id == Id) {
@@ -843,11 +850,13 @@
             else if (chon == 3) {
                 cout << "\t\tNhap ten giao vien moi : "; getline(cin, List.head->teacherName);
             }
+		cout<<"------------------------------------------------------------\n";
             return;
         }
         Course* p = List.head;
         while (p != NULL) {
             if (p->id == Id) {
+		    cout<<"------------------------------------------------------\n";
                 cout << "Ban muon cap nhat thong tin nao " << endl;
                 cout << "\t1.Cap nhat ma mon hoc. \n";
                 cout << "\t2.Cap nhat ten mon hoc.\n ";
@@ -863,6 +872,7 @@
                 else if (chon == 3) {
                     cout << "\t\tNhap ten giao vien moi : "; getline(cin, p->teacherName);
                 }
+		    cout<<"-------------------------------------------------------\n";
             }
             p = p->next;
         }
@@ -901,48 +911,6 @@
         l.head = l.tail = NULL;
         return l;
     }
-
-    void tu6_11() {
-        
-        bool Run = true;
-	    cout << "--------------MENU-------------\n";
-	    cout << "1.Create a semester\n";
-            cout << "2.Add a course to this semester\n";
-            cout << "3.View list of course\n";
-            cout << "4.Update coures infomartion\n";
-            cout << "5.Add a student to the course\n";
-            cout << "0.End\n";
-	    cout << "-------------------------------\n";
-        while (Run) {        
-            int chon = 0; cin >> chon;
-            if (chon == 1) {
-                HocKi = createSemester();
-            }
-            else if (chon == 2) {
-                addCourseToSemester(HocKi);
-            }
-            else if (chon == 3) {
-                viewOfCourse(HocKi.list);
-            }
-            else if (chon == 4) {
-                updateCourseInfo(HocKi.list);
-            }
-            else if (chon == 0) {
-                Run = false;
-            }
-            else if (chon == 5) {
-                Student* sinhVien = khoitaosinhvien2();
-                addStudentToCourse(sinhVien, HocKi.list.head);
-		AddStudent1(studentList, sinhVien);
-            }
-		else
-	    {
-		    cout << "Cannot get your requirement !\n";
-		    Run = false;
-	    }
-        }
-    }
-//21
 void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses)
 {
     string courseID;
@@ -984,6 +952,49 @@ void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses
         course = course->next;
     }
 }
+    void tu6_11() {
+        
+        bool Run = true;
+	    cout << "-----------------------------------------------------\n";
+        cout << "6.Create a semester\n";
+        cout << "7.Add a course to this semester\n";
+        cout << "9.View list of course\n";
+        cout << "10.Update coures infomartion\n";
+        cout << "11.Add a student to the course\n";
+        cout << "21. View the scoreboard of a course.\n";
+        cout << "0.end\n";
+        cout << "-----------------------------------------------------\n";
+        while (Run) {        
+            int chon = 0; cin >> chon;
+            if (chon == 6) {
+                HocKi = createSemester();
+            }
+            else if (chon == 7) {
+                addCourseToSemester(HocKi);
+            }
+            else if (chon == 9) {
+                viewOfCourse(HocKi.list);
+            }
+            else if (chon == 10) {
+                updateCourseInfo(HocKi.list);
+            }
+            else if (chon == 0) {
+                Run = false;
+            }
+            else if (chon == 11) {
+                Student* sinhVien = khoitaosinhvien2();
+                addStudentToCourse(sinhVien, HocKi.list.head);
+		AddStudent1(studentList, sinhVien);
+            }
+		else
+	    {
+		    cout << "Cannot get your requirement !\n";
+		    Run = false;
+	    }
+        }
+    }
+//21
+
 =======
 
 >>>>>>> 335a44d (Go debug)
