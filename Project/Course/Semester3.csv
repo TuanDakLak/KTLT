@@ -1,0 +1,6 @@
+ID,Course name,Teacher name,Number of credits,Academic year,Max students,number of enroller,Day of week,Session
+OOP00001,OOP,Nguyen Van X,4,2023,80,0,MON,S1-S2
+DSA00001,DSA,Tran Thi Y,4,2023,85,0,TUE,S3-S4
+CMP00001,Computer Networks,Le Van Z,3,2023,90,0,WED,S5-S6
+ARC00001,Computer Architecture,Pham Van W,3,2023,95,0,THU,S7-S8
+COM00001,Combinatorics,Nguyen Thi V,2,2023,100,0,FRI,S1-S2

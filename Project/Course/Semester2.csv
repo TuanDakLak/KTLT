@@ -1,0 +1,11 @@
+ID,Course name,Teacher name,Number of credits,Academic year,Max students,number of enroller,Day of week,Session
+PHY00001,Vat Li Dai Cuong 1,Nguyen Van G,3,2023,100,0,MON,S1-S2
+CHE00001,Hoa Dai Cuong 2,Tran Thi H,3,2023,95,0,TUE,S3-S4
+PHY00002,Vat Li Dai Cuong 2,Le Van I,3,2023,105,0,WED,S5-S6
+ECO00001,Kinh Te Dai Cuong,Pham Van K,3,2023,110,0,THU,S7-S8
+PHI00001,Triet Hoc Mac Le Nin,Nguyen Thi L,2,2023,90,0,FRI,S1-S2
+HIS00001,Lich Su Dang,Tran Van M,3,2023,120,0,MON,S3-S4
+PHY00003,Vat Li Dai Cuong 1,Nguyen Van N,3,2023,100,0,TUE,S5-S6
+CHE00002,Hoa Dai Cuong 2,Tran Thi O,3,2023,95,0,WED,S7-S8
+PHY00004,Vat Li Dai Cuong 2,Le Van P,3,2023,105,0,THU,S1-S2
+ECO00002,Kinh Te Dai Cuong,Pham Van Q,3,2023,110,0,FRI,S3-S4

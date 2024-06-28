@@ -1,5 +1,5 @@
 No,Student Id,First name,Last name,Gender,Day of birth,Social ID,Other mark,Midterm mark,Final mark,Total mark
-1,20126001,Nguyen Van,A,Male,1/1/2000,123456789,9,8,7,8
+1,20126001,Nguyen Van,Van Quoc Duy ,Male,26/08/2005,123456789,9,8,7,8
 2,20126002,Tran Thi,B,Female,2/2/2001,223456789,8,7,9,8
 3,20126003,Le Van,C,Male,3/3/2002,323456789,7,9,8,8
 4,20126004,Pham Thi,D,Female,4/4/2003,423456789,9,9,9,9
@@ -8,9 +8,9 @@ No,Student Id,First name,Last name,Gender,Day of birth,Social ID,Other mark,Midt
 7,20126007,Vo Van,G,Male,7/7/2006,723456789,9,8,7,8
 8,20126008,Do Thi,H,Female,8/8/2007,823456789,8,7,9,8
 9,20126009,Dao Van,I,Male,9/9/2008,923456789,7,9,8,8
-10,20126010,Dang Thi,J,Female,10/10/2009,103456789,9,9,9,9
-11,20126011,Nguyen Van,K,Male,11/11/2010,113456789,8,8,8,8
-12,20126012,Tran Thi,L,Female,12/12/2011,123456780,7,7,7,7
+10,20126010,Dang Thi,J,Female,9/10/2008,103456789,9,9,9,9
+11,20126011,Nguyen Van,K,Male,9/11/2008,113456789,8,8,8,8
+12,20126012,Tran Thi,L,Female,9/12/2008,123456780,7,7,7,7
 13,20126013,Le Van,M,Male,13/01/2000,133456789,9,8,7,8
 14,20126014,Pham Thi,N,Female,14/02/2001,143456789,8,7,9,8
 15,20126015,Hoang Van,O,Male,15/03/2002,153456789,7,9,8,8
