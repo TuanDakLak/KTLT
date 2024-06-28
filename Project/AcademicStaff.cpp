@@ -368,8 +368,6 @@ void academicstaffmember()
     cout << "3. Add new 1st year students to 1st year classes \n";
     cout << "4. Import CSV file containing all students in a specific class to the system\n";
     cout << "5. See list student !\n";
-    cout << "19. Export list student into a csv file \n";
-    cout << "20. Import the scoreboard of a course \n";
     cout << "0. Exit !\n";
     cout << "--------------------------------------------------------------------------------\n";
     int lc;
@@ -399,14 +397,6 @@ void academicstaffmember()
         else if (lc == 5)
         {
             print(listclasses);
-        }
-        else if (lc == 19)
-        {
-            ExportCourseInforamtion(l_Course, listclasses);
-        }
-        else if (lc == 20)
-        {
-            importfile(l_Course, listclasses);
         }
         else if (lc == 0)
         {
@@ -962,6 +952,8 @@ void tu6_11() {
     cout << "9.View list of course\n";
     cout << "10.Update coures infomartion\n";
     cout << "11.Add a student to the course\n";
+    cout << "19. Export list student into a csv file \n";
+    cout << "20. Import the scoreboard of a course \n";
     cout << "21. View the scoreboard of a course.\n";
     cout << "0.end\n";
     cout << "-----------------------------------------------------\n";
@@ -986,6 +978,14 @@ void tu6_11() {
             Student* sinhVien = khoitaosinhvien2();
             addStudentToCourse(sinhVien, HocKi.list.head);
             AddStudent1(studentList, sinhVien);
+        }
+        else if (chon == 19)
+        {
+            ExportCourseInforamtion(l_Course, listclasses);
+        }
+        else if (chon == 20)
+        {
+            importfile(l_Course, listclasses);
         }
         else if (chon == 21) {
             ViewTheScoreboardOfACourse(l_Course, listclasses);
