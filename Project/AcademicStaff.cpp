@@ -44,7 +44,6 @@ void nhapngay(Student*& s)
 void khoitaosinhvien()
 {
     s = new Student();
-
     cout << "Enter NO: ";
     cin >> s->NO;
     cin.ignore();
@@ -162,7 +161,6 @@ void print(ListClasses lc)
             cout << "----------------INFORMATION----------------\n";
             while (tmp1 != NULL)
             {
-
                 cout << "NO: " << tmp1->NO << endl;
                 cout << "Student ID: " << tmp1->studentID << endl;
                 cout << "Last name: " << tmp1->lastName << endl;
@@ -173,7 +171,6 @@ void print(ListClasses lc)
                 cout << "Day: " << tmp1->dateOfBirth.ngay << endl;
                 cout << "Month: " << tmp1->dateOfBirth.thang << endl;
                 cout << "Year: " << tmp1->dateOfBirth.nam << endl;
-
                 tmp1 = tmp1->next;
             }
             cout << "-------------------------------------------\n";
@@ -253,7 +250,6 @@ void ExportCourseInforamtion(ListCourses& listcourses, ListClasses& listclasses)
     {
         if (course->id == courseID)
         {
-
             Class* classNode = listclasses.head;
             bool studentFound = false;
             while (classNode != nullptr)
@@ -289,7 +285,6 @@ void ExportCourseInforamtion(ListCourses& listcourses, ListClasses& listclasses)
     cout << "Course not found!" << endl;
 
 }
-
 //20
 void importfile(ListCourses& listcourses, ListClasses& listclasses)
 {
@@ -304,7 +299,6 @@ void importfile(ListCourses& listcourses, ListClasses& listclasses)
         cout << "Khong the mo file! " << endl;
         return;
     }
-
     string line;
     getline(file, line);
     Course* course = listcourses.head;
@@ -326,7 +320,6 @@ void importfile(ListCourses& listcourses, ListClasses& listclasses)
                     {
                         if (enrolledCourse->id == courseID)
                         {
-
                             stringstream ss;
                             string tmp;
                             getline(ss, tmp, ',');
