@@ -147,7 +147,6 @@ ListStudent CreateListStudent();
 void tu6_11();
 <<<<<<< HEAD
 // Cac ham login 
-
 User * convertUserData(ifstream & data);
 void addUser(ListUser& l, User* u);
 void getList();
@@ -155,9 +154,23 @@ User* login(string id, string pass);
 string getPass(bool isHidden);
 void Menu();
 void LoginMenu();
+
 // function setting 
 Date strToDate(const std::string& dateStr);
+int getConsoleWidth();
+void printCentered(const string& text);
 
+
+// stu (file) 
+void menutest();
+void addStudentTail(ListStudent& list, const Student& student);
+void exportCSVClass(const string filename, ListStudent& studentList);
+void viewListStudent(ListStudent studentList);
+void exportCSVGrades(const string filename1, ListStudent& list2);
+void viewScoreboardCourse(ListStudent& list2);
+int dayOfWeekToInt(string& day);
+void exportCSVCourseSemester(const string& filename, ListCourses& list);
+void printCourses(ListCourses& list);
 
 
 =======
