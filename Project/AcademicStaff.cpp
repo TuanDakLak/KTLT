@@ -193,9 +193,7 @@ void importfile(ListClasses& lc)
         cout << "Khong the mo file !" << endl;
         return;
     }
-    ofstream file1;
-    file1.open("./Class/" + classname + ".csv", ios::out | ios::app);
-    file1 << "NO,Student ID,Last Name,First Name,Gender,Social ID,Date of Birth\n";
+    
     string line;
     getline(file, line);
     while (tmp != NULL)
@@ -229,6 +227,18 @@ void importfile(ListClasses& lc)
         }
         tmp = tmp->next;
     }
+    string fileName = "./Class/" + classname + ".csv";
+ifstream checkFile(fileName);
+if (checkFile.good()) {
+    // Nếu file đã tồn tại, xóa file cũ
+    remove(fileName.c_str());
+    cout << "File existed, delete old file '" << "'" << std::endl;
+}
+checkFile.close();
+
+    ofstream file1;
+    file1.open("./Class/" + classname + ".csv", ios::out | ios::app);
+    file1 << "NO,Student ID,Last Name,First Name,Gender,Social ID,Date of Birth\n";
     tmp = lc.head;
     while (tmp != NULL)
     {
