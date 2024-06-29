@@ -403,8 +403,6 @@ void displayStaffMenu()
     cout << "|  3. Add new 1st year students to classes|" << endl;
     cout << "|  4. Import students from CSV to system  |" << endl;
     cout << "|  5. View list of students               |" << endl;
-    cout << "| 19. Export list of students to CSV      |" << endl;
-    cout << "| 20. Import course scoreboard            |" << endl;
     cout << "|  0. Exit                                |" << endl;
     cout << "===========================================" << endl;
     cout << "Choose an option: ";
@@ -438,12 +436,6 @@ void academicstaffmember()
             break;
         case 5:
             print(listclasses);
-            break;
-        case 19:
-            ExportCourseInforamtion(l_Course, listclasses);
-            break;
-        case 20:
-            importfile(l_Course, listclasses);
             break;
         case 0:
             running = false;
@@ -1033,11 +1025,14 @@ void displayMainMenu()
     cout << "\n=========================================" << endl;
     cout << "|        SEMESTER MANAGEMENT MENU       |" << endl;
     cout << "=========================================" << endl;
-    cout << "| 1. Create a semester                  |" << endl;
-    cout << "| 2. Add a course to this semester      |" << endl;
-    cout << "| 3. View list of courses               |" << endl;
-    cout << "| 4. Update course information          |" << endl;
-    cout << "| 5. Add a student to a course          |" << endl;
+    cout << "| 6. Create a semester                  |" << endl;
+    cout << "| 7. Add a course to this semester      |" << endl;
+    cout << "| 9. View list of courses               |" << endl;
+    cout << "| 19. Update course information         |" << endl;
+    cout << "| 11. Add a student to a course         |" << endl;
+    cout << "| 19. Export list of students to CSV    |" << endl;
+    cout << "| 20. Import course scoreboard          |" << endl;
+    cout << "| 21. View the scoreboard of a course   |" << endl;
     cout << "| 0. Exit                               |" << endl;
     cout << "=========================================" << endl;
     cout << "Choose an option: ";
@@ -1056,21 +1051,21 @@ void StaffMenu()
         cin.ignore(); // To consume the newline character left by cin
 
         switch (choice) {
-        case 1:
+        case 6:
             HocKi = createSemester();
             cout << "\nSemester created successfully.\n";
             break;
-        case 2:
+        case 7:
             addCourseToSemester(HocKi);
             cout << "\nCourse added to the semester successfully.\n";
             break;
-        case 3:
+        case 9:
             viewOfCourse(HocKi.list);
             break;
-        case 4:
+        case 10:
             updateCourseInfo(HocKi.list);
             break;
-        case 5: {
+        case 11: {
             Student* sinhVien = khoitaosinhvien2();
             Course* course = chooseCourse(HocKi.list);
             if (course != nullptr) {
@@ -1082,6 +1077,15 @@ void StaffMenu()
             }
             break;
         }
+        case 19:
+            ExportCourseInforamtion(l_Course, listclasses);
+            break;
+        case 20:
+            importfile(l_Course, listclasses);
+            break;
+        case 21:
+            ViewTheScoreboardOfACourse(l_Course, listclasses);
+            break;
         case 0:
             Run = false;
             cout << "\nExiting the Semester Management Menu.\n";
