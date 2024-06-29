@@ -232,7 +232,7 @@ ifstream checkFile(fileName);
 if (checkFile.good()) {
     // Nếu file đã tồn tại, xóa file cũ
     remove(fileName.c_str());
-    cout << "File existed, delete old file '" << "'" << std::endl;
+    cout << "File existed, delete old file" << std::endl;
 }
 checkFile.close();
 
