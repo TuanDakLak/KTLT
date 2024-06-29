@@ -182,6 +182,9 @@ void print(ListClasses lc)
 void importfile(ListClasses& lc)
 {
     Class* tmp = lc.head;
+    string classname;
+    cout << "Enter class name to import: ";
+    cin >> classname;
     ifstream file;
     //Doc tu file 23CTT5.csv
     file.open("23CTT5.csv");
@@ -190,9 +193,9 @@ void importfile(ListClasses& lc)
         cout << "Khong the mo file !" << endl;
         return;
     }
-    string classname;
-    cout << "Enter class name to import: ";
-    cin >> classname;
+    ofstream file1;
+    file1.open("./List Class/" + classname + ".csv", ios::out | ios::app);
+    file1 << "NO,Student ID,Last Name,First Name,Gender,Social ID,Date of Birth\n";
     string line;
     getline(file, line);
     while (tmp != NULL)
@@ -226,7 +229,24 @@ void importfile(ListClasses& lc)
         }
         tmp = tmp->next;
     }
+    tmp = lc.head;
+    while (tmp != NULL)
+    {
+        if (tmp->className == classname)
+        {
+            Student* stu = tmp->list.head;
+            while (stu != NULL)
+            {
+                file1 << stu->NO << "," << stu->studentID << "," << stu->lastName << ","<< stu->firstName << "," << stu->gender << stu->dateOfBirth.ngay << "/" << stu->dateOfBirth.thang << "/" << stu->dateOfBirth.nam << ","<< stu->socialID << "\n";
+                stu = stu->next;
+            }
+            cout << "Export file successfully !" << endl;
+            break;
+        }
+        tmp = tmp->next;
+    }
     file.close();
+    file1.close();
 }
 
 //19
