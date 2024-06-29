@@ -982,7 +982,78 @@ void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses
         course = course->next;
     }
 }
+void updateStudentResult(ListCourses& listcourses, ListClasses& listclasses) {
+    string courseID;
+    string stuID;
+    cout << "Enter ID of course: ";
+    cin >> courseID;
+    cout << "Enter ID of student: ";
+    cin >> stuID;
+    Course* course = listcourses.head;
+    while (course != nullptr)
+    {
+        if (course->id == courseID)
+        {
+            Class* classNode = listclasses.head;
 
+            bool studentFound = false;
+            while (classNode != nullptr)
+            {
+               
+                Student* student = classNode->list.head;
+                while (student != nullptr)
+                {
+                    if (student->studentID == stuID) {
+                        Course* enrolledCourse = student->enrolledCourses.head;
+                        while (enrolledCourse != nullptr)
+                        {
+                            if (enrolledCourse->id == courseID)
+                            {
+                                
+                                cout << "1.Update other mark: " << endl;
+                                cout << "2.Update midterm mark: \n";
+                                cout << "3.Update final mark: \n";
+                                cout << "4.Update total mark: \n";
+                                cout << "0.Exit\n";
+                                int chon = 0; cin >> chon;
+                                if (chon == 1) {
+                                    cin >> student->courseMark.otherMark;
+                                    cout << "---------------------------------------------------------------------------------------------------------\n";
+
+                                }
+                                else if (chon == 2) {
+                                    cin >> student->courseMark.midtermMark;
+                                    cout << "---------------------------------------------------------------------------------------------------------\n";
+
+                                }
+                                else if (chon == 3) {
+                                    cin >> student->courseMark.finalMark;
+                                    cout << "---------------------------------------------------------------------------------------------------------\n";
+
+                                }
+                                else if (chon == 4) {
+                                    cin >> student->courseMark.otherMark;
+                                    cout << "---------------------------------------------------------------------------------------------------------\n";
+
+                                }
+                                else {
+                                    cout << "---------------------------------------------------------------------------------------------------------\n";
+                                    return;
+                                }
+                            }
+                            enrolledCourse = enrolledCourse->next;
+                        }
+                   }
+                    student = student->next;
+                }
+                cout << "-----------------------------------------------------------------------------------------------------------\n";
+                classNode = classNode->next;
+            }
+            return;
+        }
+        course = course->next;
+    }
+}
 Course* chooseCourse(ListCourses& list) 
 {
     if (list.head == nullptr) {
