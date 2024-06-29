@@ -135,6 +135,45 @@ void Menu()
 }
 
 
+void Menu()
+{
+	cin.ignore(); // Xóa bộ nhớ đệm
+	cout << "\n-------------------------\n";
+	cout << "		Login		" << endl;
+	cout << "ID:";
+	getline(cin, id);
+	cout << "Password: ";
+	pass = getPass(true);
+	cout << "\n---------------------------\n";
+}
+
+void viewProfile(User* user)
+{
+	if (user == nullptr)
+	{
+		cout << "No user is logged in.\n";
+		return;
+	}
+
+	clearScreen();
+	cout << "\n-------------------------\n";
+	cout << "       User Profile     \n";
+	cout << "-------------------------\n";
+	cout << "ID:               " << user->id << endl;
+	cout << "First Name:      " << user->firstName << endl;
+	cout << "Last Name:       " << user->lastName << endl;
+	cout << "Class:           " << user->className << endl;
+	cout << "Gender:          " << user->gender << endl;
+	cout << "Date of Birth:   " << user->dateofbirth.ngay << "/"
+		<< user->dateofbirth.thang << "/"
+		<< user->dateofbirth.nam << endl;
+	cout << "Academic Year:   " << user->academicYear << endl;
+	cout << "Staff:           " << (user->isStaff ? "Yes" : "No") << endl;
+	cout << "-------------------------\n";
+	cout << "Press Enter to go back to the menu.";
+	cin.ignore();
+}
+
 void LoginMenu()
 {
 	while (true)
@@ -142,7 +181,8 @@ void LoginMenu()
 		getList(); // Cập nhật danh sách người dùng mỗi lần lặp
 		Menu(); // Hiển thị menu đăng nhập và lấy id, pass từ người dùng
 
-		if (id == "0") {
+		if (id == "0")
+		{
 			cout << "Quitting login process.\n";
 			break; // Thoát vòng lặp nếu người dùng nhập id là "0"
 		}
@@ -152,6 +192,7 @@ void LoginMenu()
 		if (current != nullptr)
 		{
 			cout << "Login successful\n";
+			viewProfile(current);
 			if (current->isStaff)
 			{
 				cout << "Welcome, staff!\n";
@@ -160,7 +201,7 @@ void LoginMenu()
 			else
 			{
 				cout << "Welcome, user!\n";
-				tu6_11(); // Gọi hàm cho user
+				StaffMenu(); // Gọi hàm cho user
 			}
 		}
 		else
