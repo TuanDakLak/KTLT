@@ -146,6 +146,7 @@ void updateCourseInfo(ListCourses& List);
 void fileListStudent(Course* x, Student* a);
 void addStudentToCourse(Student*& a, Course* x);
 ListStudent CreateListStudent();
+void updateStudentResult(ListCourses& listcourses, ListClasses& listclasses);
 void displayMainMenuStaff();
 void StaffMenu();
 Course* chooseCourse(ListCourses& list);
