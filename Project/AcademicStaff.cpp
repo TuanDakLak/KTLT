@@ -1006,57 +1006,71 @@ void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses
         course = course->next;
     }
 }
-void tu6_11() {
+void displayMainMenu()
+{
+    cout << "\n=========================================" << endl;
+    cout << "|        SEMESTER MANAGEMENT MENU       |" << endl;
+    cout << "=========================================" << endl;
+    cout << "| 1. Create a semester                  |" << endl;
+    cout << "| 2. Add a course to this semester      |" << endl;
+    cout << "| 3. View list of courses               |" << endl;
+    cout << "| 4. Update course information          |" << endl;
+    cout << "| 5. Add a student to a course          |" << endl;
+    cout << "| 0. Exit                               |" << endl;
+    cout << "=========================================" << endl;
+    cout << "Choose an option: ";
+}
 
+void StaffMenu()
+{
+
+    Semester HocKi;
     bool Run = true;
-    cout << "-----------------------------------------------------\n";
-    cout << "6.Create a semester\n";
-    cout << "7.Add a course to this semester\n";
-    cout << "9.View list of course\n";
-    cout << "10.Update coures infomartion\n";
-    cout << "11.Add a student to the course\n";
-    cout << "19. Export list student into a csv file \n";
-    cout << "20. Import the scoreboard of a course \n";
-    cout << "21. View the scoreboard of a course.\n";
-    cout << "0.end\n";
-    cout << "-----------------------------------------------------\n";
+    int choice;
+
     while (Run) {
-        int chon = 0; cin >> chon;
-        if (chon == 6) {
+        displayMainMenu();
+        cin >> choice;
+        cin.ignore(); // To consume the newline character left by cin
+
+        switch (choice) {
+        case 1:
             HocKi = createSemester();
-        }
-        else if (chon == 7) {
+            cout << "\nSemester created successfully.\n";
+            break;
+        case 2:
             addCourseToSemester(HocKi);
-        }
-        else if (chon == 9) {
+            cout << "\nCourse added to the semester successfully.\n";
+            break;
+        case 3:
             viewOfCourse(HocKi.list);
-        }
-        else if (chon == 10) {
+            break;
+        case 4:
             updateCourseInfo(HocKi.list);
-        }
-        else if (chon == 0) {
-            Run = false;
-        }
-        else if (chon == 11) {
+            break;
+        case 5: {
             Student* sinhVien = khoitaosinhvien2();
-            addStudentToCourse(sinhVien, HocKi.list.head);
-            AddStudent1(studentList, sinhVien);
+            Course* course = chooseCourse(HocKi.list);
+            if (course != nullptr) {
+                addStudentToCourse(sinhVien, course);
+                cout << "\nStudent added to the course successfully.\n";
+            }
+            else {
+                cout << "\nInvalid course selected.\n";
+            }
+            break;
         }
-        else if (chon == 19)
-        {
-            ExportCourseInforamtion(l_Course, listclasses);
-        }
-        else if (chon == 20)
-        {
-            importfile(l_Course, listclasses);
-        }
-        else if (chon == 21) {
-            ViewTheScoreboardOfACourse(l_Course, listclasses);
-        }
-        else
-        {
-            cout << "Cannot get your requirement !\n";
+        case 0:
             Run = false;
+            cout << "\nExiting the Semester Management Menu.\n";
+            break;
+        default:
+            cout << "\nInvalid choice. Please try again.\n";
+            break;
         }
+        cout << "\nPress Enter to continue...";
+        cin.ignore();
     }
 }
+
+
