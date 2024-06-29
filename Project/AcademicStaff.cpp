@@ -194,7 +194,7 @@ void importfile(ListClasses& lc)
         return;
     }
     ofstream file1;
-    file1.open("./List Class/" + classname + ".csv", ios::out | ios::app);
+    file1.open("./Class/" + classname + ".csv", ios::out | ios::app);
     file1 << "NO,Student ID,Last Name,First Name,Gender,Social ID,Date of Birth\n";
     string line;
     getline(file, line);
