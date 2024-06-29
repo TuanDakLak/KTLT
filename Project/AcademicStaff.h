@@ -132,7 +132,6 @@ void ViewListOfStuInClass(ListClasses& listclasses); // xem tất cả học sin
 void ViewListOfCourse(ListCourses& listcourses);   // Xem tất cả các khóa học 
 void ViewListOfStuInCourse(ListCourses& listcourses, ListClasses& listclasses); // Xem tất cả học sinh trong một khóa học 
 
-
 //Ham cua Ty
 Student* khoitaosinhvien2();
 bool checkTime(Date a, Date b);
