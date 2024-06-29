@@ -654,8 +654,8 @@ void ViewListOfStuInCourse(ListCourses& listcourses, ListClasses& listclasses)
     cout << "Course not found!" << endl;
 }
 
-    //6-11
-Student * khoitaosinhvien2(){
+//6-11
+Student* khoitaosinhvien2() {
     Student* s = new Student();
 
     cout << "Enter NO: ";
@@ -688,7 +688,7 @@ bool checkTime(Date a, Date b) {
 Semester createSemester()
 {
     Semester tmp;
- 
+
     cout << "Hoc ki bao nhieu (1,2 hay 3) : "; cin >> tmp.semester;
     cout << "Nam hoc :"; cin >> tmp.startDate.nam; tmp.endDate.nam = tmp.startDate.nam;
     cout << "Ngay bat dau : " << endl;;
@@ -814,52 +814,65 @@ void viewOfCourse(ListCourses list) {
 void updateCourseInfo(ListCourses& List) {
     string Id;
     cin.ignore();
- 
-    cout << "Nhap id mon hoc de cap nhat thong tin : ";
-    getline(cin, Id);
-    if (List.head->id == Id) {
-        cout << "Ban muon cap nhat thong tin nao " << endl;
-        cout << "\t1.Cap nhat ma mon hoc. \n";
-        cout << "\t2.Cap nhat ten mon hoc.\n ";
-        cout << "\t3.Cap nhat ten giao vien.\n";
-        int chon = 0; cin >> chon;
-        cin.ignore();
-        if (chon == 1) {
-            cout << "\t\tNhap ma lop moi : "; getline(cin, List.head->id);
-        }
-        else if (chon == 2) {
-            cout << "\t\tNhap ten moc hoc moi : "; getline(cin, List.head->courseName);
-        }
-        else if (chon == 3) {
-            cout << "\t\tNhap ten giao vien moi : "; getline(cin, List.head->teacherName);
-        }
+    if (List.head == NULL) {
+        cout << "Hien tai khong co mon nao trong danh sach!!\n";
         cout << "-------------------------------------------------------------------------------------------------------------\n";
         return;
     }
-    Course* p = List.head;
-    while (p != NULL) {
-        if (p->id == Id) {
-
+    Course* pNode = List.head;
+    cout << "Nhap id mon hoc de cap nhat thong tin : ";
+    getline(cin, Id);
+    
+    while (pNode != NULL) {
+        if (pNode->id == Id) {
             cout << "Ban muon cap nhat thong tin nao " << endl;
             cout << "\t1.Cap nhat ma mon hoc. \n";
             cout << "\t2.Cap nhat ten mon hoc.\n ";
             cout << "\t3.Cap nhat ten giao vien.\n";
+            cout << "\t4.Cap nhat so luong sinh vien.\n";
+            cout << "\t5.Cap nhat so tin chi.\n";
+            cout << "\t6.Cap nhat ngay hoc trong tuan (2,3..).\n";
+            cout << "\t7.Cap nhat tiet hoc trong ngay (S1,S2,S3 hoac S4).\n";
+            cout << "\t0.Thoat" << endl;
             int chon = 0; cin >> chon;
             cin.ignore();
             if (chon == 1) {
-                cout << "\t\tNhap ma lop moi : "; getline(cin, p->id);
+                cout << "\t\tNhap ma lop moi : "; getline(cin, pNode->id);
             }
             else if (chon == 2) {
-                cout << "\t\tNhap ten moc hoc moi : "; getline(cin, p->courseName);
+                cout << "\t\tNhap ten moc hoc moi : "; getline(cin, pNode->courseName);
             }
             else if (chon == 3) {
-                cout << "\t\tNhap ten giao vien moi : "; getline(cin, p->teacherName);
+                cout << "\t\tNhap ten giao vien moi : "; getline(cin, pNode->teacherName);
             }
-            cout << "-----------------------------------------------------------------------------------------------\n";
-        }
-        p = p->next;
-    }
+            else if (chon == 4) {
+                cout << "\t\tNhap so luong sinh vien moi : "; cin >> pNode->max;
+            }
+            else if (chon == 5) {
+                cout << "\t\tNhap so tin chi moi : "; cin >> pNode->credits;
+            }
+            else if (chon == 6) {
+                cout << "\t\tNhap ngay hoc trong tuan moi : "; cin >> pNode->dayOfWeek;
+            }
+            else if (chon == 7) {
+                cout << "\t\tNhap tiet hoc trong ngay moi : "; getline(cin, pNode->session);
+            }
 
+            else if (chon == 0) {
+                cout << "-------------------------------------------------------------------------------------------------------------\n";
+                return;
+            }
+
+            else {
+                cout << "\t\tNHAP SAI ROI!!!\n";
+                cout << "-------------------------------------------------------------------------------------------------------------\n";
+                return;
+            }
+        }
+        pNode = pNode->next;
+    }
+    cout << "-------------------------------------------------------------------------------------------------------------\n";
+    return;
 }
 void fileListStudent(Course* x, Student* a) {
     if (x == NULL) {
@@ -935,7 +948,7 @@ void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses
                     }
                     student = student->next;
                 }
-                cout << "-----------------------------------------------------------------------------------------------------------\n"; 
+                cout << "-----------------------------------------------------------------------------------------------------------\n";
                 classNode = classNode->next;
             }
             return;
