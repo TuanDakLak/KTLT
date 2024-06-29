@@ -786,7 +786,7 @@ void addCourseToSemester(Semester& hk) {
     ofstream file;
     file.open("./Course/" + monHoc->id + ".csv", ios::out);
     if (!file.is_open()) {
-        cout << "errol\n";
+        cout << "error\n";
         return;
     }
     file << "ID,LAST NAME,FIST NAME,DATE OF BIRT" << endl;
