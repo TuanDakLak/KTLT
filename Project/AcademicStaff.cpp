@@ -460,37 +460,6 @@ void academicstaffmember()
         }
     }
 }
-void RemoveStudentFromTheCourse(Course* toCourse)
-{
-    // Xóa nhờ student ID 
-    string ID;
-    cin.ignore();
-    cout << "Student ID: "; getline(cin, ID);
-
-    Course* p = toCourse;
-    Course* prev = nullptr;
-    while (p != NULL)
-    {
-        if (p->id == ID)
-        {
-            if (prev == nullptr)
-            {
-                toCourse = p->next;
-            }
-            else
-            {
-                prev->next = p->next;
-            }
-            delete p;
-            cout << "Succesful \n";
-            return;
-        }
-        // Nếu không có id 
-        prev = p;
-        p = p->next;
-    }
-    cout << "Student not found \n";
-}
 void deleteCourse()
 {
     Course* p = nullptr;
@@ -562,71 +531,47 @@ void ViewCourse()
         Course = Course->next;
     }
 }
-void ViewListOfClass()
+void ViewListOfClass() 
 {
-    Class* lop = listclasses.head;
-    int size = listclasses.size;
-    if (size == 0)
-    {
-        cout << "Danh sach lop rong \n";
+    Class* currentClass = listclasses.head;
+    if (currentClass == nullptr) {
+        cout << "Class list is empty.\n";
+        return;
     }
-    else
-    {
-        int cnt = 0;
-        for (int i = 0; i < size; i++)
-        {
-            ++cnt;
-            cout << "\n----------------------\n";
-            cout << "Class name: " << lop->className << endl;
-            lop = lop->next;
-        }
 
+    int cnt = 0;
+    while (currentClass != nullptr) {
+        ++cnt;
+        cout << "\n----------------------\n";
+        cout << "Class name: " << currentClass->className << endl;
+        currentClass = currentClass->next;
     }
 }
-void ViewListOfStuInClass(ListClasses& listclasses)
+void ViewListOfStuInClass(ListClasses& listclasses) 
 {
-    // Prompt for class ID
-    int IDClass = 0;
+    int IDClass;
     cout << "Enter ID of class: ";
     cin >> IDClass;
 
-    // Find the class with the specified ID
-    Class* p = listclasses.head;
-    while (p != nullptr)
-    {
-        if (p->ID == IDClass)
-        {
-
-            ListStudent tmp = p->list;
-            Student* student = tmp.head;
-            while (student != nullptr)
-            {
-
-                cout << "Student NO: " << student->NO << endl;
-                cout << "Student ID: " << student->studentID << endl;
-                cout << "Name: " << student->lastName << " " << student->firstName << endl;
-                cout << "Gender: " << student->gender << endl;
-                cout << "Social ID: " << student->socialID << endl;
-                cout << "Date of Birth: " << student->dateOfBirth.ngay << "/" << student->dateOfBirth.thang << "/" << student->dateOfBirth.nam << endl;
-                cout << "Academic Year: " << student->academicYear << endl;
-                cout << "Enrolled Courses: " << endl;
-                Course* course = student->enrolledCourses.head;
-                while (course != nullptr)
-                {
-                    cout << "  Course ID: " << course->id << endl;
-                    cout << "  Course Name: " << course->courseName << endl;
-                    cout << "  Teacher Name: " << course->teacherName << endl;
-                    course = course->next;
-                }
+    Class* currentClass = listclasses.head;
+    while (currentClass != nullptr) {
+        if (currentClass->ID == IDClass) {
+            Student* currentStudent = currentClass->list.head;
+            while (currentStudent != nullptr) {
+                cout << "Student ID: " << currentStudent->studentID << endl;
+                cout << "Name: " << currentStudent->lastName << " " << currentStudent->firstName << endl;
+                cout << "Gender: " << currentStudent->gender << endl;
+                cout << "Social ID: " << currentStudent->socialID << endl;
+                cout << "Date of Birth: " << currentStudent->dateOfBirth.ngay << "/" << currentStudent->dateOfBirth.thang << "/" << currentStudent->dateOfBirth.nam << endl;
+                cout << "Academic Year: " << currentStudent->academicYear << endl;
                 cout << "----------------------------------------" << endl;
-                student = student->next;
+                currentStudent = currentStudent->next;
             }
             return;
         }
-        p = p->next;
+        currentClass = currentClass->next;
     }
-
-    cout << "Class not found!" << endl;
+    cout << "Class not found.\n";
 }
 void ViewListOfCourse(ListCourses& listcourses)
 {
@@ -647,63 +592,102 @@ void ViewListOfCourse(ListCourses& listcourses)
         course = course->next;
     }
 }
-void ViewListOfStuInCourse(ListCourses& listcourses, ListClasses& listclasses)
-{
-
+void ViewListOfStuInCourse(ListCourses& listcourses, ListClasses& listclasses) {
     string courseID;
     cout << "Enter ID of course: ";
     cin >> courseID;
 
-    // Find the course with the specified ID
-    Course* course = listcourses.head;
-    while (course != nullptr)
-    {
-        if (course->id == courseID)
-        {
-
-            Class* classNode = listclasses.head;
+    Course* currentCourse = listcourses.head;
+    while (currentCourse != nullptr) {
+        if (currentCourse->id == courseID) {
+            Class* currentClass = listclasses.head;
             bool studentFound = false;
-            while (classNode != nullptr)
-            {
-                Student* student = classNode->list.head;
-                while (student != nullptr)
-                {
-
-                    Course* enrolledCourse = student->enrolledCourses.head;
-                    while (enrolledCourse != nullptr)
-                    {
-                        if (enrolledCourse->id == courseID)
-                        {
-
-                            cout << "Student NO: " << student->NO << endl;
-                            cout << "Student ID: " << student->studentID << endl;
-                            cout << "Name: " << student->lastName << " " << student->firstName << endl;
-                            cout << "Gender: " << student->gender << endl;
-                            cout << "Social ID: " << student->socialID << endl;
-                            cout << "Date of Birth: " << student->dateOfBirth.ngay << "/" << student->dateOfBirth.thang << "/" << student->dateOfBirth.nam << endl;
-                            cout << "Academic Year: " << student->academicYear << endl;
+            while (currentClass != nullptr) {
+                Student* currentStudent = currentClass->list.head;
+                while (currentStudent != nullptr) {
+                    Course* enrolledCourse = currentStudent->enrolledCourses.head;
+                    while (enrolledCourse != nullptr) {
+                        if (enrolledCourse->id == courseID) {
+                            cout << "Student ID: " << currentStudent->studentID << endl;
+                            cout << "Name: " << currentStudent->lastName << " " << currentStudent->firstName << endl;
+                            cout << "Gender: " << currentStudent->gender << endl;
+                            cout << "Social ID: " << currentStudent->socialID << endl;
+                            cout << "Date of Birth: " << currentStudent->dateOfBirth.ngay << "/" << currentStudent->dateOfBirth.thang << "/" << currentStudent->dateOfBirth.nam << endl;
+                            cout << "Academic Year: " << currentStudent->academicYear << endl;
                             cout << "----------------------------------------" << endl;
                             studentFound = true;
-                            break;
                         }
                         enrolledCourse = enrolledCourse->next;
                     }
-                    student = student->next;
+                    currentStudent = currentStudent->next;
                 }
-                classNode = classNode->next;
+                currentClass = currentClass->next;
             }
-
-            if (!studentFound)
-            {
+            if (!studentFound) {
                 cout << "No students enrolled in this course.\n";
             }
             return;
         }
-        course = course->next;
+        currentCourse = currentCourse->next;
     }
-    cout << "Course not found!" << endl;
+    cout << "Course not found.\n";
 }
+void showMenu() 
+{
+    cout << "===== MENU =====" << endl;
+    cout << "1. View Course" << endl;
+    cout << "2. View List of Classes" << endl;
+    cout << "3. View List of Students in a Class" << endl;
+    cout << "4. View List of Courses" << endl;
+    cout << "5. View List of Students in a Course" << endl;
+    cout << "6. Remove Student from a Course" << endl;
+    cout << "7. Delete a Course" << endl;
+    cout << "8. Exit" << endl;
+    cout << "================" << endl;
+}
+// Initialize your data structures and variables
+void Menuof() 
+{
+    int choice;
+    bool exit = false;
 
+    while (!exit) {
+        showMenu();
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            ViewListOfCourse(l_Course);
+            break;
+        case 2:
+            ViewListOfClass();
+            break;
+        case 3:
+            ViewListOfStuInClass(listclasses);
+            break;
+        case 4:
+            ViewCourse();
+            break;
+        case 5:
+            ViewListOfStuInCourse(l_Course, listclasses);
+            break;
+        case 6:
+          
+            break;
+        case 7:
+            deleteCourse();
+            break;
+        case 8:
+            exit = true;
+            cout << "Exiting program..." << endl;
+            break;
+        default:
+            cout << "Invalid choice. Please enter a valid option." << endl;
+            break;
+        }
+    }
+}
 //6-11
 Student* khoitaosinhvien2() {
     Student* s = new Student();
@@ -1005,6 +989,44 @@ void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses
         }
         course = course->next;
     }
+}
+
+Course* chooseCourse(ListCourses& list) 
+{
+    if (list.head == nullptr) {
+        cout << "No courses available.\n";
+        return nullptr;
+    }
+
+    Course* current = list.head;
+    int courseIndex = 1;
+
+    // Display the list of courses
+    cout << "\nAvailable Courses:\n";
+    while (current != nullptr) {
+        cout << courseIndex << ". " << current->id << " - " << current->courseName << endl;
+        current = current->next;
+        courseIndex++;
+    }
+
+    // Ask user to choose a course
+    int choice;
+    cout << "\nEnter the course number to select: ";
+    cin >> choice;
+
+    // Validate choice
+    if (choice < 1 || choice >= courseIndex) {
+        cout << "Invalid choice. Please try again.\n";
+        return nullptr;
+    }
+
+    // Reset current pointer and find the selected course
+    current = list.head;
+    for (int i = 1; i < choice; ++i) {
+        current = current->next;
+    }
+
+    return current;
 }
 void displayMainMenu()
 {
