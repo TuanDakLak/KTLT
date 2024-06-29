@@ -273,7 +273,7 @@ void ExportCourseInforamtion(ListCourses& listcourses, ListClasses& listclasses)
    file.open("./CourseInformation/" + courseID + ".csv", ios::out | ios::app);
     if (!file)
     {
-        cout << "Khong the mo file Export.csv" << endl;
+        cout << "Khong the mo file" << endl;
         return;
     }
     file << "NO,Student ID,Last Name,First Name,Gender,Date of birth,Social ID" << endl;
