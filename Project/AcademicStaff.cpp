@@ -270,7 +270,7 @@ void ExportCourseInforamtion(ListCourses& listcourses, ListClasses& listclasses)
     cin >> courseID;
 
     ofstream file;
-    file.open("Export.csv");
+   file.open("./CourseInformation/" + courseID + ".csv", ios::out | ios::app);
     if (!file)
     {
         cout << "Khong the mo file Export.csv" << endl;
