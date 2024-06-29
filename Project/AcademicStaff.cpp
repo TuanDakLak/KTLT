@@ -1028,7 +1028,7 @@ void displayMainMenu()
     cout << "| 6. Create a semester                  |" << endl;
     cout << "| 7. Add a course to this semester      |" << endl;
     cout << "| 9. View list of courses               |" << endl;
-    cout << "| 19. Update course information         |" << endl;
+    cout << "| 10. Update course information         |" << endl;
     cout << "| 11. Add a student to a course         |" << endl;
     cout << "| 19. Export list of students to CSV    |" << endl;
     cout << "| 20. Import course scoreboard          |" << endl;
