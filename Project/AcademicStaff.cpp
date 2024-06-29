@@ -393,56 +393,73 @@ void importfile(ListCourses& listcourses, ListClasses& listclasses)
     cout << "Course not found!" << endl;
 }
 //Menu tu 1-5, 19,20
+void displayStaffMenu()
+{
+    cout << "\n===========================================" << endl;
+    cout << "|           ACADEMIC STAFF MENU           |" << endl;
+    cout << "===========================================" << endl;
+    cout << "|  1. Create a school year                |" << endl;
+    cout << "|  2. Create several classes for 1st year |" << endl;
+    cout << "|  3. Add new 1st year students to classes|" << endl;
+    cout << "|  4. Import students from CSV to system  |" << endl;
+    cout << "|  5. View list of students               |" << endl;
+    cout << "| 19. Export list of students to CSV      |" << endl;
+    cout << "| 20. Import course scoreboard            |" << endl;
+    cout << "|  0. Exit                                |" << endl;
+    cout << "===========================================" << endl;
+    cout << "Choose an option: ";
+}
 void academicstaffmember()
 {
-    cout << "----------------------------------Staff Member----------------------------------\n";
-    cout << "1. Create a school year \n";
-    cout << "2. Create Several Classes for 1st students\n";
-    cout << "3. Add new 1st year students to 1st year classes \n";
-    cout << "4. Import CSV file containing all students in a specific class to the system\n";
-    cout << "5. See list student !\n";
-    cout << "0. Exit !\n";
-    cout << "--------------------------------------------------------------------------------\n";
-    int lc;
-    while (1)
-    {
-        cout << "Enter option: ";
-        cin >> lc;
-        if (lc == 1)
-        {
+    int choice;
+    bool running = true;
+
+    while (running) {
+        displayStaffMenu();
+        cin >> choice;
+        cin.ignore(); // Consume the newline character left by cin
+
+        switch (choice) {
+        case 1:
             CreateSchoolYear();
-        }
-        else if (lc == 2)
-        {
+            break;
+        case 2: {
             int num = 0;
             khoitaolistclass();
             AddnClass(listclasses, num);
+            break;
         }
-        else if (lc == 3)
-        {
+        case 3:
             khoitaoliststudent(studentList);
             AddStudenttoClass(listclasses);
-        }
-        else if (lc == 4)
-        {
+            break;
+        case 4:
             importfile(listclasses);
-        }
-        else if (lc == 5)
-        {
+            break;
+        case 5:
             print(listclasses);
-        }
-        else if (lc == 0)
-        {
+            break;
+        case 19:
+            ExportCourseInforamtion(l_Course, listclasses);
+            break;
+        case 20:
+            importfile(l_Course, listclasses);
+            break;
+        case 0:
+            running = false;
+            cout << "\nExiting the Academic Staff Menu.\n";
+            break;
+        default:
+            cout << "\nInvalid choice. Please try again.\n";
             break;
         }
-        else
-        {
-            cout << "Cannot get your requirement !" << endl;
-            break;
+
+        if (running) {
+            cout << "\nPress Enter to continue...";
+            cin.ignore();
         }
     }
 }
-
 void RemoveStudentFromTheCourse(Course* toCourse)
 {
     // Xóa nhờ student ID 
