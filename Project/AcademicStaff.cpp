@@ -1104,6 +1104,7 @@ void displayMainMenu()
     cout << "| 19. Export list of students to CSV    |" << endl;
     cout << "| 20. Import course scoreboard          |" << endl;
     cout << "| 21. View the scoreboard of a course   |" << endl;
+    cout << "| 22. Update a student's result         |" << endl;
     cout << "| 0. Exit                               |" << endl;
     cout << "=========================================" << endl;
     cout << "Choose an option: ";
@@ -1156,6 +1157,9 @@ void StaffMenu()
             break;
         case 21:
             ViewTheScoreboardOfACourse(l_Course, listclasses);
+            break;
+        case 22:
+            void updateStudentResult(l_Course, listclasses);
             break;
         case 0:
             Run = false;
