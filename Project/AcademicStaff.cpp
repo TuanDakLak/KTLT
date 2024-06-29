@@ -159,20 +159,23 @@ void print(ListClasses lc)
             }
             if (tmp == NULL) return;
             cout << "----------------INFORMATION----------------\n";
-            while (tmp1 != NULL)
-            {
-                cout << "NO: " << tmp1->NO << endl;
-                cout << "Student ID: " << tmp1->studentID << endl;
-                cout << "Last name: " << tmp1->lastName << endl;
-                cout << "First name: " << tmp1->firstName << endl;
-                cout << "Gioi tinh: " << tmp1->gender << endl;
-                cout << "Social ID: " << tmp1->socialID << endl;
-                cout << "Born date: " << endl;
-                cout << "Day: " << tmp1->dateOfBirth.ngay << endl;
-                cout << "Month: " << tmp1->dateOfBirth.thang << endl;
-                cout << "Year: " << tmp1->dateOfBirth.nam << endl;
-                tmp1 = tmp1->next;
-            }
+             int i = 1;
+ while (tmp1 != NULL)
+ {
+     cout << "Student number " << i + 1 << endl;
+     cout << "NO: " << tmp1->NO << endl;
+     cout << "Student ID: " << tmp1->studentID << endl;
+     cout << "Last name: " << tmp1->lastName << endl;
+     cout << "First name: " << tmp1->firstName << endl;
+     cout << "Gioi tinh: " << tmp1->gender << endl;
+     cout << "Social ID: " << tmp1->socialID << endl;
+     cout << "Born date: " << endl;
+     cout << "Day: " << tmp1->dateOfBirth.ngay << endl;
+     cout << "Month: " << tmp1->dateOfBirth.thang << endl;
+     cout << "Year: " << tmp1->dateOfBirth.nam << endl;
+     cout << endl;
+     tmp1 = tmp1->next;
+ }
             cout << "-------------------------------------------\n";
             break;
         }
