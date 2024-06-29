@@ -122,18 +122,6 @@ void clearScreen()
 {
 	system("cls"); // Xóa màn hình console
 }
-void Menu()
-{
-	cin.ignore(); // Xóa bộ nhớ đệm
-	cout << "\n-------------------------\n";
-	cout << "		Login		" << endl;
-	cout << "ID:";
-	getline(cin, id);
-	cout << "Password: ";
-	pass = getPass(true);
-	cout << "\n---------------------------\n";
-}
-
 
 void Menu()
 {
