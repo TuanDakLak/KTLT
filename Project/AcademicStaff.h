@@ -16,7 +16,7 @@ struct User {
     string firstName;
     string className;
     string gender;
-    int academicYear; 
+    int academicYear;
     Date dateofbirth;
     bool isStaff;
     User* prev;
@@ -41,7 +41,7 @@ struct ListCourses {
     Course* head;
     Course* tail;
     Date startDate, endDate;
-    int size; 
+    int size;
 };
 struct ListUser {
     User* head;
@@ -80,15 +80,15 @@ struct Student {
 struct ListStudent {
     Student* head;
     Student* tail;
-    Student data; 
+    Student data;
     string className;
     string year;
 };
 // Struct Class thêm ID 
-struct Class 
+struct Class
 {
     ListStudent list;
-    int ID; 
+    int ID;
     string className;
     Class* prev;
     Class* next;
@@ -129,7 +129,6 @@ void displayStaffMenu();
 void deleteCourse();
 void ViewCourse(); // xem khóa học 
 void ViewListOfClass(); // xem tất cả lớp học 
-void ViewListOfStuInClass(ListClasses& listclasses); // xem tất cả học sinh trong một lớp 
 void ViewListOfCourse(ListCourses& listcourses);   // Xem tất cả các khóa học 
 void ViewListOfStuInCourse(ListCourses& listcourses, ListClasses& listclasses); // Xem tất cả học sinh trong một khóa học 
 void showMenu();
@@ -155,9 +154,8 @@ void StaffMenu();
 Course* chooseCourse(ListCourses& list);
 
 
-<<<<<<< HEAD
-// Cac ham login 
-User * convertUserData(ifstream & data);
+    // Cac ham login 
+    User * convertUserData(ifstream & data);
 void addUser(ListUser& l, User* u);
 void getList();
 User* login(string id, string pass);
@@ -182,7 +180,5 @@ int dayOfWeekToInt(string& day);
 void exportCSVCourseSemester(const string& filename, ListCourses& list);
 void printCourses(ListCourses& list);
 
-
-=======
+void displayMainMenu();
 void ViewTheScoreboardOfACourse(ListCourses listcourses, ListClasses listclasses);
->>>>>>> 5f77cc6d580f15235f6da6c578baf86d073bae28
