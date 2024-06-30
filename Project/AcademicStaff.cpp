@@ -1243,7 +1243,7 @@ void MainMenu()
 
         switch (choice) {
         case 1:
-            ViewListOfCourse(l_Course);
+            ViewListOfCourse(HocKi.list);
             break;
         case 2:
             ViewListOfClass();
@@ -1255,7 +1255,7 @@ void MainMenu()
             ViewCourse();
             break;
         case 5:
-            ViewListOfStuInCourse(l_Course, listclasses);
+            ViewListOfStuInCourse(HocKi.list, listclasses);
             break;
         case 6:
             // Implement remove student from course functionality
@@ -1299,4 +1299,3 @@ void MainMenu()
         cin.ignore();
     }
 }
-
