@@ -1212,5 +1212,90 @@ void StaffMenu()
         cin.ignore();
     }
 }
+void showMenuStaff() 
+{
+    cout << "===== MENU =====" << endl;
+    cout << "1. View List of Courses" << endl;
+    cout << "2. View List of Classes" << endl;
+    cout << "3. View List of Students in a Class" << endl;
+    cout << "4. View Course Details" << endl;
+    cout << "5. View List of Students in a Course" << endl;
+    cout << "6. Remove Student from a Course" << endl;
+    cout << "7. Delete a Course" << endl;
+    cout << "8. Create a Semester" << endl;
+    cout << "9. Add a Course to a Semester" << endl;
+    cout << "10. Update Course Information" << endl;
+    cout << "11. Add a Student to a Course" << endl;
+    cout << "12. Exit" << endl;
+    cout << "================" << endl;
+}
+void MainMenu() 
+{
+    Semester HocKi;
+    int choice;
+    bool exit = false;
 
+    while (!exit) {
+        showMenuStaff();
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            ViewListOfCourse(l_Course);
+            break;
+        case 2:
+            ViewListOfClass();
+            break;
+        case 3:
+            ViewListOfStuInClass(listclasses);
+            break;
+        case 4:
+            ViewCourse();
+            break;
+        case 5:
+            ViewListOfStuInCourse(l_Course, listclasses);
+            break;
+        case 6:
+            // Implement remove student from course functionality
+            break;
+        case 7:
+            deleteCourse();
+            break;
+        case 8:
+            HocKi = createSemester();
+            cout << "\nSemester created successfully.\n";
+            break;
+        case 9:
+            addCourseToSemester(HocKi);
+            cout << "\nCourse added to the semester successfully.\n";
+            break;
+        case 10:
+            updateCourseInfo(HocKi.list);
+            break;
+        case 11: {
+            Student* sinhVien = khoitaosinhvien2();
+            Course* course = chooseCourse(HocKi.list);
+            if (course != nullptr) {
+                addStudentToCourse(sinhVien, course);
+                cout << "\nStudent added to the course successfully.\n";
+            }
+            else {
+                cout << "\nInvalid course selected.\n";
+            }
+            break;
+        }
+        case 12:
+            exit = true;
+            cout << "Exiting program..." << endl;
+            break;
+        default:
+            cout << "Invalid choice. Please enter a valid option." << endl;
+            break;
+        }
+
+        cout << "\nPress Enter to continue...";
+        cin.ignore();
+    }
+}
 
