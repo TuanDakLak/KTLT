@@ -159,23 +159,23 @@ void print(ListClasses lc)
             }
             if (tmp == NULL) return;
             cout << "----------------INFORMATION----------------\n";
-             int i = 1;
- while (tmp1 != NULL)
- {
-     cout << "Student number " << i + 1 << endl;
-     cout << "NO: " << tmp1->NO << endl;
-     cout << "Student ID: " << tmp1->studentID << endl;
-     cout << "Last name: " << tmp1->lastName << endl;
-     cout << "First name: " << tmp1->firstName << endl;
-     cout << "Gioi tinh: " << tmp1->gender << endl;
-     cout << "Social ID: " << tmp1->socialID << endl;
-     cout << "Born date: " << endl;
-     cout << "Day: " << tmp1->dateOfBirth.ngay << endl;
-     cout << "Month: " << tmp1->dateOfBirth.thang << endl;
-     cout << "Year: " << tmp1->dateOfBirth.nam << endl;
-     cout << endl;
-     tmp1 = tmp1->next;
- }
+            int i = 1;
+            while (tmp1 != NULL)
+            {
+                cout << "Student number " << i + 1 << endl;
+                cout << "NO: " << tmp1->NO << endl;
+                cout << "Student ID: " << tmp1->studentID << endl;
+                cout << "Last name: " << tmp1->lastName << endl;
+                cout << "First name: " << tmp1->firstName << endl;
+                cout << "Gioi tinh: " << tmp1->gender << endl;
+                cout << "Social ID: " << tmp1->socialID << endl;
+                cout << "Born date: " << endl;
+                cout << "Day: " << tmp1->dateOfBirth.ngay << endl;
+                cout << "Month: " << tmp1->dateOfBirth.thang << endl;
+                cout << "Year: " << tmp1->dateOfBirth.nam << endl;
+                cout << endl;
+                tmp1 = tmp1->next;
+            }
             cout << "-------------------------------------------\n";
             break;
         }
@@ -196,7 +196,7 @@ void importfile(ListClasses& lc)
         cout << "Khong the mo file !" << endl;
         return;
     }
-    
+
     string line;
     getline(file, line);
     while (tmp != NULL)
@@ -231,13 +231,13 @@ void importfile(ListClasses& lc)
         tmp = tmp->next;
     }
     string fileName = "./Class/" + classname + ".csv";
-ifstream checkFile(fileName);
-if (checkFile.good()) {
-    // Nếu file đã tồn tại, xóa file cũ
-    remove(fileName.c_str());
-    cout << "File existed, delete old file" << std::endl;
-}
-checkFile.close();
+    ifstream checkFile(fileName);
+    if (checkFile.good()) {
+        // Nếu file đã tồn tại, xóa file cũ
+        remove(fileName.c_str());
+        cout << "File existed, delete old file" << std::endl;
+    }
+    checkFile.close();
 
     ofstream file1;
     file1.open("./Class/" + classname + ".csv", ios::out | ios::app);
@@ -250,7 +250,7 @@ checkFile.close();
             Student* stu = tmp->list.head;
             while (stu != NULL)
             {
-                file1 << stu->NO << "," << stu->studentID << "," << stu->lastName << ","<< stu->firstName << "," << stu->gender << stu->dateOfBirth.ngay << "/" << stu->dateOfBirth.thang << "/" << stu->dateOfBirth.nam << ","<< stu->socialID << "\n";
+                file1 << stu->NO << "," << stu->studentID << "," << stu->lastName << "," << stu->firstName << "," << stu->gender << stu->dateOfBirth.ngay << "/" << stu->dateOfBirth.thang << "/" << stu->dateOfBirth.nam << "," << stu->socialID << "\n";
                 stu = stu->next;
             }
             cout << "Export file successfully !" << endl;
@@ -270,7 +270,7 @@ void ExportCourseInforamtion(ListCourses& listcourses, ListClasses& listclasses)
     cin >> courseID;
 
     ofstream file;
-   file.open("./CourseInformation/" + courseID + ".csv", ios::out | ios::app);
+    file.open("./CourseInformation/" + courseID + ".csv", ios::out | ios::app);
     if (!file)
     {
         cout << "Khong the mo file" << endl;
@@ -316,7 +316,6 @@ void ExportCourseInforamtion(ListCourses& listcourses, ListClasses& listclasses)
         course = course->next;
     }
     cout << "Course not found!" << endl;
-
 }
 //20
 void importfile(ListCourses& listcourses, ListClasses& listclasses)
@@ -523,7 +522,7 @@ void ViewCourse()
         Course = Course->next;
     }
 }
-void ViewListOfClass() 
+void ViewListOfClass()
 {
     Class* currentClass = listclasses.head;
     if (currentClass == nullptr) {
@@ -538,32 +537,6 @@ void ViewListOfClass()
         cout << "Class name: " << currentClass->className << endl;
         currentClass = currentClass->next;
     }
-}
-void ViewListOfStuInClass(ListClasses& listclasses) 
-{
-    int IDClass;
-    cout << "Enter ID of class: ";
-    cin >> IDClass;
-
-    Class* currentClass = listclasses.head;
-    while (currentClass != nullptr) {
-        if (currentClass->ID == IDClass) {
-            Student* currentStudent = currentClass->list.head;
-            while (currentStudent != nullptr) {
-                cout << "Student ID: " << currentStudent->studentID << endl;
-                cout << "Name: " << currentStudent->lastName << " " << currentStudent->firstName << endl;
-                cout << "Gender: " << currentStudent->gender << endl;
-                cout << "Social ID: " << currentStudent->socialID << endl;
-                cout << "Date of Birth: " << currentStudent->dateOfBirth.ngay << "/" << currentStudent->dateOfBirth.thang << "/" << currentStudent->dateOfBirth.nam << endl;
-                cout << "Academic Year: " << currentStudent->academicYear << endl;
-                cout << "----------------------------------------" << endl;
-                currentStudent = currentStudent->next;
-            }
-            return;
-        }
-        currentClass = currentClass->next;
-    }
-    cout << "Class not found.\n";
 }
 void ViewListOfCourse(ListCourses& listcourses)
 {
@@ -624,7 +597,7 @@ void ViewListOfStuInCourse(ListCourses& listcourses, ListClasses& listclasses) {
     }
     cout << "Course not found.\n";
 }
-void showMenu() 
+void showMenu()
 {
     cout << "===== MENU =====" << endl;
     cout << "1. View Course" << endl;
@@ -638,7 +611,7 @@ void showMenu()
     cout << "================" << endl;
 }
 // Initialize your data structures and variables
-void Menuof() 
+void Menuof()
 {
     int choice;
     bool exit = false;
@@ -656,7 +629,7 @@ void Menuof()
             ViewListOfClass();
             break;
         case 3:
-            ViewListOfStuInClass(listclasses);
+            print(listclasses);
             break;
         case 4:
             ViewCourse();
@@ -665,7 +638,7 @@ void Menuof()
             ViewListOfStuInCourse(l_Course, listclasses);
             break;
         case 6:
-          
+
             break;
         case 7:
             deleteCourse();
@@ -746,7 +719,7 @@ Semester createSemester()
 }
 Course* CreateCourse() {
     Course* p = new Course();
-    cin.ignore();
+
 
     cout << "ID mon hoc : ";
     getline(cin, p->id);
@@ -790,7 +763,6 @@ void addCourseToSemester(Semester& hk) {
 
     if (hk.list.head == NULL) {
         hk.list.head = hk.list.tail = monHoc;
-
         return;
     }
     Course* p = hk.list.head;
@@ -799,8 +771,6 @@ void addCourseToSemester(Semester& hk) {
         p = p->next;
     }
     p->next = monHoc;
-
-
     //file.close();
 }
 
@@ -848,7 +818,7 @@ void updateCourseInfo(ListCourses& List) {
     Course* pNode = List.head;
     cout << "Nhap id mon hoc de cap nhat thong tin : ";
     getline(cin, Id);
-    
+
     while (pNode != NULL) {
         if (pNode->id == Id) {
             cout << "Ban muon cap nhat thong tin nao " << endl;
@@ -999,7 +969,7 @@ void updateStudentResult(ListCourses& listcourses, ListClasses& listclasses) {
             bool studentFound = false;
             while (classNode != nullptr)
             {
-               
+
                 Student* student = classNode->list.head;
                 while (student != nullptr)
                 {
@@ -1009,7 +979,7 @@ void updateStudentResult(ListCourses& listcourses, ListClasses& listclasses) {
                         {
                             if (enrolledCourse->id == courseID)
                             {
-                                
+
                                 cout << "1.Update other mark: " << endl;
                                 cout << "2.Update midterm mark: \n";
                                 cout << "3.Update final mark: \n";
@@ -1043,7 +1013,7 @@ void updateStudentResult(ListCourses& listcourses, ListClasses& listclasses) {
                             }
                             enrolledCourse = enrolledCourse->next;
                         }
-                   }
+                    }
                     student = student->next;
                 }
                 cout << "-----------------------------------------------------------------------------------------------------------\n";
@@ -1059,38 +1029,38 @@ void ViewTheScoreboardOfAClass(ListClasses listclasses)
     int classID;
     cout << "Enter ID of class: ";
     cin >> classID;
-    
+
     Class* classNode = listclasses.head;
-            
+
     while (classNode != nullptr)
     {
-                if (classNode->ID == classID) {
-                    cout << "Class Name : " << classNode->className << endl;
+        if (classNode->ID == classID) {
+            cout << "Class Name : " << classNode->className << endl;
 
-                    Student* student = classNode->list.head;
-                    while (student != nullptr)
-                    {
-                        cout << "Name student: " << student->firstName << " " << student->lastName << endl;
-                        cout << "\tGPA: " << student->semesterMark.GPA << endl;
-                        cout << "\tOverall GPA: " << student->semesterMark.overallGPA << endl;
-                        Course* enrolledCourse = student->enrolledCourses.head;
-                        while (enrolledCourse != nullptr)
-                        {
-                            cout << "\tName Course: " << enrolledCourse->courseName << endl;
-                            cout << "\t\tFinal marks: " << student->courseMark.finalMark << endl;
-                           
-                            enrolledCourse = enrolledCourse->next;
-                        }
-                        student = student->next;
-                    }
-                    classNode = classNode->next;
+            Student* student = classNode->list.head;
+            while (student != nullptr)
+            {
+                cout << "Name student: " << student->firstName << " " << student->lastName << endl;
+                cout << "\tGPA: " << student->semesterMark.GPA << endl;
+                cout << "\tOverall GPA: " << student->semesterMark.overallGPA << endl;
+                Course* enrolledCourse = student->enrolledCourses.head;
+                while (enrolledCourse != nullptr)
+                {
+                    cout << "\tName Course: " << enrolledCourse->courseName << endl;
+                    cout << "\t\tFinal marks: " << student->courseMark.finalMark << endl;
+
+                    enrolledCourse = enrolledCourse->next;
                 }
+                student = student->next;
+            }
+            classNode = classNode->next;
+        }
     }
     cout << "-----------------------------------------------------------------------------------------------------------\n";
     return;
-       
+
 }
-Course* chooseCourse(ListCourses& list) 
+Course* chooseCourse(ListCourses& list)
 {
     if (list.head == nullptr) {
         cout << "No courses available.\n";
@@ -1137,6 +1107,12 @@ void displayMainMenu()
     cout << "| 9. View list of courses               |" << endl;
     cout << "| 10. Update course information         |" << endl;
     cout << "| 11. Add a student to a course         |" << endl;
+    cout << "| 12. Remove Student from a Course      |" << endl;
+    cout << "| 13. Delete a Course                   |" << endl;
+    cout << "| 15. View List of Courses              |" << endl;
+    cout << "| 16. View List of Students in a Class  |" << endl;
+    cout << "| 17. View Course Details               |" << endl;
+    cout << "| 18. View List of Students in a Course |" << endl;
     cout << "| 19. Export list of students to CSV    |" << endl;
     cout << "| 20. Import course scoreboard          |" << endl;
     cout << "| 21. View the scoreboard of a course   |" << endl;
@@ -1186,6 +1162,24 @@ void StaffMenu()
             }
             break;
         }
+        case 12:
+            // Implement remove student from course functionality
+            break;
+        case 13:
+            deleteCourse();
+            break;
+        case 15:
+            ViewListOfCourse(HocKi.list);
+            break;
+        case 16:
+            print(listclasses);
+            break;
+        case 17:
+            ViewCourse();
+            break;
+        case 18:
+            ViewListOfStuInCourse(HocKi.list, listclasses);
+            break;
         case 19:
             ExportCourseInforamtion(l_Course, listclasses);
             break;
@@ -1198,7 +1192,7 @@ void StaffMenu()
         case 22:
             updateStudentResult(l_Course, listclasses);
             break;
-        case 23 :
+        case 23:
             ViewTheScoreboardOfAClass(listclasses);
             break;
         case 0:
@@ -1213,11 +1207,10 @@ void StaffMenu()
         cin.ignore();
     }
 }
-void showMenuStaff() 
+void showMenuStaff()
 {
     cout << "===== MENU =====" << endl;
     cout << "1. View List of Courses" << endl;
-    cout << "2. View List of Classes" << endl;
     cout << "3. View List of Students in a Class" << endl;
     cout << "4. View Course Details" << endl;
     cout << "5. View List of Students in a Course" << endl;
@@ -1230,9 +1223,9 @@ void showMenuStaff()
     cout << "12. Exit" << endl;
     cout << "================" << endl;
 }
-void MainMenu() 
+void MainMenu()
 {
-    Semester HocKi;
+    
     int choice;
     bool exit = false;
 
@@ -1249,7 +1242,7 @@ void MainMenu()
             ViewListOfClass();
             break;
         case 3:
-            ViewListOfStuInClass(listclasses);
+            print(listclasses);
             break;
         case 4:
             ViewCourse();
