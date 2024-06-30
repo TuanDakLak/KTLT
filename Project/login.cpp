@@ -189,7 +189,7 @@ void LoginMenu()
 			else
 			{
 				cout << "Welcome, user!\n";
-				StaffMenu(); // Gọi hàm cho user
+				MainMenu();  // Gọi hàm cho user
 			}
 		}
 		else
