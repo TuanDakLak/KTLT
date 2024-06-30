@@ -1,4 +1,4 @@
-﻿#include "AcademicStaff.h"
+#include "AcademicStaff.h"
 const string userData = "Users.csv";
 string id, pass;
 User* current = NULL;
@@ -189,7 +189,7 @@ void LoginMenu()
 			else
 			{
 				cout << "Welcome, user!\n";
-				MainMenu();  // Gọi hàm cho user
+				StaffMenu();  // Gọi hàm cho user
 			}
 		}
 		else
