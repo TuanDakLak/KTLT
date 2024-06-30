@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <Windows.h>
 using namespace std;
 struct Date {
     int ngay, thang, nam;
