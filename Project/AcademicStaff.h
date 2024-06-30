@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <Windows.h>
+#include <iomanip>
 using namespace std;
 struct Date {
     int ngay, thang, nam;
@@ -30,6 +31,8 @@ struct Course {
     int max;
     //So tin tin chi
     int credits;
+    int size;
+    int academic;
     //Ngay hoc trong tuan
     int dayOfWeek;
     //tiet hoc trong ngay
