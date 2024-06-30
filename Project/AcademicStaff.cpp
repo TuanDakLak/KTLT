@@ -1054,6 +1054,41 @@ void updateStudentResult(ListCourses& listcourses, ListClasses& listclasses) {
         course = course->next;
     }
 }
+void ViewTheScoreboardOfAClass(ListClasses listclasses)
+{
+    int classID;
+    cout << "Enter ID of class: ";
+    cin >> classID;
+    
+    Class* classNode = listclasses.head;
+            
+    while (classNode != nullptr)
+    {
+                if (classNode->ID == classID) {
+                    cout << "Class Name : " << classNode->className << endl;
+
+                    Student* student = classNode->list.head;
+                    while (student != nullptr)
+                    {
+                        Course* enrolledCourse = student->enrolledCourses.head;
+                        while (enrolledCourse != nullptr)
+                        {
+                            cout << "Name student: " << student->firstName << " " << student->lastName << endl;
+                            cout << "\tName Course: " << enrolledCourse->courseName << endl;
+                            cout << "\t\tFinal marks: " << student->courseMark.finalMark << endl;
+                            cout << "\tGPA: " << student->semesterMark.GPA << endl;
+                            cout << "\tOverall GPA: " << student->semesterMark.overallGPA << endl;
+                            enrolledCourse = enrolledCourse->next;
+                        }
+                        student = student->next;
+                    }
+                    classNode = classNode->next;
+                }
+    }
+    cout << "-----------------------------------------------------------------------------------------------------------\n";
+    return;
+       
+}
 Course* chooseCourse(ListCourses& list) 
 {
     if (list.head == nullptr) {
@@ -1105,6 +1140,7 @@ void displayMainMenu()
     cout << "| 20. Import course scoreboard          |" << endl;
     cout << "| 21. View the scoreboard of a course   |" << endl;
     cout << "| 22. Update a student's result         |" << endl;
+    cout << "| 23. View the scoreboard of a class    |" << endl;
     cout << "| 0. Exit                               |" << endl;
     cout << "=========================================" << endl;
     cout << "Choose an option: ";
@@ -1159,7 +1195,10 @@ void StaffMenu()
             ViewTheScoreboardOfACourse(l_Course, listclasses);
             break;
         case 22:
-            void updateStudentResult(l_Course, listclasses);
+            updateStudentResult(l_Course, listclasses);
+            break;
+        case 23 :
+            ViewTheScoreboardOfAClass(listclasses);
             break;
         case 0:
             Run = false;
