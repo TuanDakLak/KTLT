@@ -1070,14 +1070,15 @@ void ViewTheScoreboardOfAClass(ListClasses listclasses)
                     Student* student = classNode->list.head;
                     while (student != nullptr)
                     {
+                        cout << "Name student: " << student->firstName << " " << student->lastName << endl;
+                        cout << "\tGPA: " << student->semesterMark.GPA << endl;
+                        cout << "\tOverall GPA: " << student->semesterMark.overallGPA << endl;
                         Course* enrolledCourse = student->enrolledCourses.head;
                         while (enrolledCourse != nullptr)
                         {
-                            cout << "Name student: " << student->firstName << " " << student->lastName << endl;
                             cout << "\tName Course: " << enrolledCourse->courseName << endl;
                             cout << "\t\tFinal marks: " << student->courseMark.finalMark << endl;
-                            cout << "\tGPA: " << student->semesterMark.GPA << endl;
-                            cout << "\tOverall GPA: " << student->semesterMark.overallGPA << endl;
+                           
                             enrolledCourse = enrolledCourse->next;
                         }
                         student = student->next;
