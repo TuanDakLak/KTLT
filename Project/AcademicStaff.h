@@ -133,7 +133,8 @@ void ViewListOfCourse(ListCourses& listcourses);   // Xem tất cả các khóa 
 void ViewListOfStuInCourse(ListCourses& listcourses, ListClasses& listclasses); // Xem tất cả học sinh trong một khóa học 
 void showMenu();
 void Menuof();
-
+void showMenuStaff();
+void MainMenu();
 
 //Ham cua Ty
 Student* khoitaosinhvien2();
